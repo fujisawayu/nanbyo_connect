@@ -7,11 +7,13 @@
 
 ## 就業 Term の技術
 
+- AWS EC2
 - devise
 - コメント機能
 
 ## カリキュラム外の技術
 
+- Docker
 - ransack
 
 ## 実行手順
@@ -26,14 +28,16 @@ $ rails s
 
 ## カタログ設計、テーブル定義書
 
+https://docs.google.com/spreadsheets/d/1euw1yJwkfKTRru_60_pyI0GfIXTWCCal7emeHwR73Ys/edit?usp=sharing
+
 ## ER 図
 
-![image]()
+![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/er_diagram.png)
 
 ## 画面遷移図
 
-![image]()
+![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/screen_transition_diagram.png)
 
 ## ワイヤーフレーム
 
-![image]()
+![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/wireframe.png)
