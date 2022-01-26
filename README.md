@@ -26,9 +26,13 @@ $ rails db:create db:migrate
 $ rails s
 ```
 
-## カタログ設計、テーブル定義書
+## カタログ設計
 
 https://docs.google.com/spreadsheets/d/1euw1yJwkfKTRru_60_pyI0GfIXTWCCal7emeHwR73Ys/edit?usp=sharing
+
+## テーブル定義書
+
+https://docs.google.com/spreadsheets/d/1_b4SCW6ZNiu6drtGvsKz-Ls4MAD2pYaoVzFS3kiK4QM/edit?usp=sharing
 
 ## ER 図
 
@@ -40,4 +44,4 @@ https://docs.google.com/spreadsheets/d/1euw1yJwkfKTRru_60_pyI0GfIXTWCCal7emeHwR7
 
 ## ワイヤーフレーム
 
-![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/wireframe.png)
+https://cacoo.com/diagrams/QGm3QGDHp9dpe8UR/8BA9D
