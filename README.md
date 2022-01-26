@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発言語
 
-Things you may want to cover:
+- Ruby 3.0.1
+- Rails 6.0.4
 
-* Ruby version
+## 就業 Term の技術
 
-* System dependencies
+- devise
+- コメント機能
 
-* Configuration
+## カリキュラム外の技術
 
-* Database creation
+- ransack
 
-* Database initialization
+## 実行手順
 
-* How to run the test suite
+```
+$ git clone git@github.com:fujisawagithub/nanbyo_connect.git
+$ cd nanbyo_connect
+$ bundle install
+$ rails db:create db:migrate
+$ rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## カタログ設計、テーブル定義書
 
-* Deployment instructions
+## ER 図
 
-* ...
+![image]()
+
+## 画面遷移図
+
+![image]()
+
+## ワイヤーフレーム
+
+![image]()
