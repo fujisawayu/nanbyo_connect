@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2022_01_28_085618) do
     t.text "self_introduction"
     t.string "icon"
     t.integer "classification"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
