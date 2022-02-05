@@ -11,23 +11,31 @@
 </head>
 
 <body>
-  <% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to "新規登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-  <%= link_to 'ゲスト管理者ログイン（閲覧用）', users_admin_guest_sign_in_path, method: :post %>
-  <% end %>
+  <header>
+    <%#menu_ber記載%>
+    <%# if user_signed_in? %>
+    <%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%# else %>
+    <% unless user_signed_in? %>
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+    <%= link_to 'ゲスト管理者ログイン（閲覧用）', users_admin_guest_sign_in_path, method: :post %>
+    <% end %>
 
-  <% if notice %>
-  <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-  <p class="alert alert-error"><%= alert %></p>
-  <% end %>
+    <div>
+      <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+      <% end %>
 
-  <%= yield %>
+      <%= yield %>
+    </div>
 </body>
+
+<footer>
+  <p>©︎ 2022 NanbyoConnect</p>
 
 </html>
