@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  root 'tops#index'
+  # get 'tops', to: 'tops#index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'diseases#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
