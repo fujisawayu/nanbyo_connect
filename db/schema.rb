@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_02_06_123132) do
     t.date "birthday"
     t.integer "prefecture"
     t.text "self_introduction"
-    t.string "icon"
+    t.string "image"
     t.integer "classification"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
