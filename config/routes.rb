@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'tops#index'
   # get 'tops', to: 'tops#index'
-  resources :users, only: %i[show index new]
+  resources :users, only: %i[show index new edit]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
