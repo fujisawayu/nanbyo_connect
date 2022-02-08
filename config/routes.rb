@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :diseases
+  resources :treatments
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
