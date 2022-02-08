@@ -10,13 +10,15 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :users
-
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
 
+  resources :users
+  resources :diseases
+  resources :treatments, only: [:index, :create]
+  
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
