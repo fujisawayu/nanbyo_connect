@@ -5,10 +5,11 @@
         新規投稿
       </button>
     </div>
+    <div class="col-9 sidebar treatments">
+      <%= render 'treatments', treatments: @treatments %>
+    </div>
   </div>
 </div>
-
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -31,13 +32,13 @@
           <%= f.text_area :content, class: "form-control"%>
           <%= f.label :advice, "アドバイス"%>
           <%= f.text_area :advice, class: "form-control"%>
-
-
-
+          <%#<%= f.hidden_field :disease_id %>
+          <%= f.label :disease_id, "疾患番号"%>
+          <%= f.text_field :disease_id, class: "form-control"%>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
         <%= f.submit "投稿する", class: "btn btn-primary" %>
       </div>
       <% end %>
