@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'tops#index'
   # get 'tops', to: 'tops#index'
+ 
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
+
+  resources :users
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
