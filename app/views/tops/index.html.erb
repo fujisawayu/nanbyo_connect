@@ -3,7 +3,7 @@
       <ul>
         <li><a href="/">ホーム</a></li>
         <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-        <li><a href="/menu">疾患選択</a></li>
+        <li><%= link_to "疾患選択", diseases_path %></li>
         <% if user_signed_in? %>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <% else %>
