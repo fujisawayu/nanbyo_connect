@@ -10,7 +10,9 @@
   <%= @disease.name %>
 </p>
 
+
 <%= link_to 'Edit', edit_disease_path(@disease) %> |
 <%= link_to 'Back', root_path %>|
-<%= link_to "治療情報一覧", treatments_path(@disease.id) %>|
-<%= link_to "治療費情報一覧", expenses_path(@disease.id) %>
+<%= link_to "治療情報一覧", "/diseases/#{@disease.id}/treatments" %>|
+<%= link_to "治療費情報一覧", "/diseases/#{@disease.id}/expenses" %>|
+<%# "/疾患/#{@疾患.id}/治療費" %>

@@ -22,7 +22,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= form_for @treatment, remote: true do |f|%>
+      <%= form_with (model: treatment, remote: true) do |f|%>
       <div class="modal-body">
         <div class="form-group">
           <%= f.label :affected_on, "罹患日"%>
