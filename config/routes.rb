@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :diseases
-  resources :treatments, only: [:index, :create]
-  resources :expenses
+  resources :diseases do
+    resources :treatments
+    resources :expenses 
+  end
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
