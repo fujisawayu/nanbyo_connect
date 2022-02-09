@@ -1,6 +1,17 @@
 <h1>Editing Expenses</h1>
 
-<%= render 'form', expense: @expense %>
+<%= form_with(model: [@expense.disease, @expense], local: true) do |form| %>
+<div class="field">
+  <%= form.label :treatment_cost %>
+  <%= form.text_field :treatment_cost %>
+</div>
 
-<%= link_to 'Show', @expense %> |
-<%= link_to 'Back', expenses_path %>
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>
+<%#= render 'form', expense: @expense %>
+
+<%#= link_to 'Show', @expense %> |
+<%= link_to 'Back', disease_path(@expense.disease_id) %>

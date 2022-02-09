@@ -1,4 +1,4 @@
-<h1>Diseasesindex</h1>
+<h1>Expenses index</h1>
 
 <table>
   <thead>
@@ -14,16 +14,20 @@
   <tbody>
     <% @expenses.each do |expense| %>
     <tr>
-      <td><%= expense.number %></td>
-      <td><%= expense.name %></td>
-      <td><%= link_to 'Show', expense %></td>
-      <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-      <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= expense.treatment_cost %></td>
+      <td><%= expense.drug_cost %></td>
+      <td><%= expense.other_cost %></td>
+      <td><%= link_to 'Show', disease_expense_path(expense, id: expense.id) %></td>
+      <td><%= link_to 'Edit', edit_disease_expense_path(expense, id: expense.id) %></td>
+      <td>
+        <%= link_to 'Destroy', disease_expense_path(expense, id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'New expenses', new_expense_path %>
+<%#= link_to 'New expenses', new_disease_expense_path(@disease) %>
 <%= link_to '疾患一覧', diseases_path %>
+<%= link_to '仮Create 治療費', new_disease_expense_path %> |
