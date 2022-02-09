@@ -1,14 +1,15 @@
 class TreatmentsController < ApplicationController
   before_action :authenticate_user!
   def index
+    @disease = Disease.find(1)
     @treatments = Treatment.all
     @treatment = Treatment.new
   end
 
   def create
-    #diseaseとのリレーション設定必要
     @treatment = Treatment.new(treatment_params)
-    @treatment.save!
+    binding.irb
+    # @treatment.disease_id = disease.id
     @treatments = Treatment.all
   end
 
