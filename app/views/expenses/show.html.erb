@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>treatment_cost:</strong>
+  <%= @expense.treatment_cost %>
+</p>
+<p>
+  <strong>drug_cost:</strong>
+  <%= @expense.drug_cost %>
+</p>
+<p>
+  <strong>other_cost:</strong>
+  <%= @expense.other_cost %>
+</p>
+
+<%= link_to 'Edit', edit_disease_expense_path(@expense) %> |
+<%= link_to 'Back', disease_path(@expense.disease_id) %>

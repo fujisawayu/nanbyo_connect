@@ -1,0 +1,34 @@
+<h1>Expenses index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>treatment_cost</th>
+      <th>drug_cost</th>
+      <th>other_cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <p id="notice"><%= notice %></p>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.treatment_cost %></td>
+      <%# binding.irb%>
+      <td><%= expense.drug_cost %></td>
+      <td><%= expense.other_cost %></td>
+      <td><%= link_to 'Show', disease_expense_path(expense, id: expense.id) %></td>
+      <td><%= link_to 'Edit', edit_disease_expense_path(expense, id: expense.id) %></td>
+      <td>
+        <%= link_to 'Destroy', disease_expense_path(expense, id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%#= link_to 'New expenses', new_disease_expense_path(@disease) %>
+<%= link_to '疾患一覧', diseases_path %>|
+<%= link_to '治療費登録', new_disease_expense_path %> |

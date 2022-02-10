@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>罹患日:</strong>
+  <%= @treatment.affected_on %>
+</p>
+<p>
+  <strong>薬剤名:</strong>
+  <%= @treatment.drug_name %>
+</p>
+<p>
+  <strong>内容:</strong>
+  <%= @treatment.content %>
+</p>
+<p>
+  <strong>アドバイス:</strong>
+  <%= @treatment.advice %>
+</p>
+
+<%= link_to 'Edit', edit_disease_treatment_path(@treatment) %> |
+<%= link_to 'Back', disease_path(@treatment.disease_id) %>

@@ -1,0 +1,42 @@
+<h1>Editing Expenses</h1>
+
+<%= form_with(model: [@treatment.disease, @treatment], local: true) do |form| %>
+<% if @treatment.errors.any? %> <div id="error_explanation">
+  <h2><%= pluralize(@treatment.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+  <ul>
+    <% @treatment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="field">
+  <%= form.label :罹患日 %>
+  <%= form.date_field :affected_on %>
+</div>
+
+<div class="field">
+  <%= form.label :薬剤名 %>
+  <%= form.text_field :drug_name %>
+</div>
+
+<div class="field">
+  <%= form.label :内容 %>
+  <%= form.text_area :content %>
+</div>
+
+<div class="field">
+  <%= form.label :アドバイス %>
+  <%= form.text_area :advice %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>
+<%#= render 'form', expense: @expense %>
+
+<%#= link_to 'Show', @expense %> |
+<%= link_to 'Back', disease_path(@treatment.disease_id) %>

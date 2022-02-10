@@ -1,0 +1,27 @@
+<h1>New Expenses</h1>
+
+<%= form_with(model: [@disease, @expense], local: true) do |form| %>
+<div class="field">
+  <%= form.label :treatment_cost %>
+  <%= form.text_field :treatment_cost %>
+</div>
+
+<div class="field">
+  <%= form.label :drug_cost %>
+  <%= form.text_field :drug_cost %>
+</div>
+
+<div class="field">
+  <%= form.label :other_cost %>
+  <%= form.text_field :other_cost %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>
+
+<%#= render 'form', expense: @expense %>
+
+<%= link_to 'Back', disease_path(@disease) %>

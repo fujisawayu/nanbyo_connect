@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_023944) do
+ActiveRecord::Schema.define(version: 2022_02_08_122353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2022_02_08_023944) do
     t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "treatment_cost"
+    t.integer "drug_cost"
+    t.integer "other_cost"
+    t.bigint "disease_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disease_id"], name: "index_expenses_on_disease_id"
   end
 
   create_table "treatments", force: :cascade do |t|
@@ -66,5 +76,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_023944) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "expenses", "diseases"
   add_foreign_key "treatments", "diseases"
 end
