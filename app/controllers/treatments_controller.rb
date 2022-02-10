@@ -2,26 +2,21 @@ class TreatmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_treatment, only: %i[ show edit update destroy ]
 
-  # GET /users or /users.json
   def index
-    @treatments = Treatment.all
+    @treatments = Treatment.where(disease_id: params[:disease_id] )
   end
 
-  # GET /users/1 or /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @disease = Disease.find(params[:disease_id])
     @treatment = Treatment.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users or /users.json
   def create
     @treatment = Treatment.new(treatment_params)
     @treatment.disease_id = params[:disease_id]
@@ -37,7 +32,6 @@ class TreatmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @treatment.update(treatment_params)
@@ -50,7 +44,6 @@ class TreatmentsController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
   def destroy
     @treatment.destroy
 
@@ -61,12 +54,10 @@ class TreatmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_treatment
       @treatment = Treatment.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def treatment_params
       params.require(:treatment).permit(:affected_on, :drug_name, :content, :advice, :disease_id)
     end

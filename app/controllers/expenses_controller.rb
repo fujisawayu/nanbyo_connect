@@ -2,26 +2,21 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_expense, only: %i[ show edit update destroy ]
 
-  # GET /users or /users.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.where(disease_id: params[:disease_id] )
   end
 
-  # GET /users/1 or /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @disease = Disease.find(params[:disease_id])
     @expense = Expense.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users or /users.json
   def create
     @expense = Expense.new(expense_params)
     @expense.disease_id = params[:disease_id]
@@ -37,7 +32,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @expense.update(expense_params)
@@ -50,7 +44,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
   def destroy
     @expense.destroy
 
@@ -61,12 +54,10 @@ class ExpensesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def expense_params
       params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id)
     end

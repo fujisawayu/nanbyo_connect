@@ -2,25 +2,22 @@ class DiseasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_disease, only: %i[ show edit update destroy ]
 
-  # GET /users or /users.json
   def index
     @diseases = Disease.all
   end
 
-  # GET /users/1 or /users/1.json
   def show
+    @comments = @disease.comments
+    @comment = @disease.comments.build
   end
 
-  # GET /users/new
   def new
     @disease = Disease.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users or /users.json
   def create
     @disease = Disease.new(disease_params)
 
@@ -35,7 +32,6 @@ class DiseasesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @disease.update(disease_params)
@@ -48,7 +44,6 @@ class DiseasesController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
   def destroy
     @disease.destroy
 
@@ -59,12 +54,10 @@ class DiseasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_disease
       @disease = Disease.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def disease_params
       params.require(:disease).permit(:id, :name, :number)
     end

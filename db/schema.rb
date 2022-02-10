@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_122353) do
+ActiveRecord::Schema.define(version: 2022_02_10_053409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "disease_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disease_id"], name: "index_comments_on_disease_id"
+  end
 
   create_table "diseases", force: :cascade do |t|
     t.string "name"
@@ -76,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_122353) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "comments", "diseases"
   add_foreign_key "expenses", "diseases"
   add_foreign_key "treatments", "diseases"
 end

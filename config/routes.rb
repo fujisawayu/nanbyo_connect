@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'expenses/index'
   root 'tops#index'
   # get 'tops', to: 'tops#index'
  
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   resources :diseases do
     resources :treatments
     resources :expenses 
+    resources :comments, only: [:create, :destroy, :edit, :update]
   end
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
