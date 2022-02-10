@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/create'
   get 'expenses/index'
   root 'tops#index'
   # get 'tops', to: 'tops#index'
