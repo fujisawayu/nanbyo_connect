@@ -4,7 +4,7 @@ class TreatmentsController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @treatments = Treatment.all
+    @treatments = Treatment.where(disease_id: params[:disease_id] )
   end
 
   # GET /users/1 or /users/1.json
