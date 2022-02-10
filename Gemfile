@@ -17,6 +17,7 @@ gem 'rails_admin', ['>= 3.0.0.beta2', '< 4']
 gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ransack'
 
 
 group :development, :test do
