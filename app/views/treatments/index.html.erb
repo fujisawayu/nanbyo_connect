@@ -1,48 +1,36 @@
-<h1><%= @disease.name %>のページ</h1>
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-3">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        新規投稿
-      </button>
-    </div>
-    <div class="col-9 sidebar treatments">
-      <%= render 'treatments', treatments: @treatments %>
-    </div>
-  </div>
-</div>
+<h1>Expenses index</h1>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">新規投稿</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <%= form_with (model: treatment, remote: true) do |f|%>
-      <div class="modal-body">
-        <div class="form-group">
-          <%= f.label :affected_on, "罹患日"%>
-          <%= f.date_field :affected_on, class: "form-control"%>
-          <%= f.label :drug_name, "薬剤名"%>
-          <%= f.text_field :drug_name, class: "form-control"%>
-          <%= f.label :content, "内容"%>
-          <%= f.text_area :content, class: "form-control"%>
-          <%= f.label :advice, "アドバイス"%>
-          <%= f.text_area :advice, class: "form-control"%>
-          <%#<%= f.hidden_field :disease_id %>
-          <%= f.label :disease_id, "疾患番号"%>
-          <%= f.text_field :disease_id, class: "form-control"%>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-        <%= f.submit "投稿する", class: "btn btn-primary" %>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>affected_on</th>
+      <th>drug_name</th>
+      <th>content</th>
+      <th>advice</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <p id="notice"><%= notice %></p>
+
+  <tbody>
+    <% @treatments.each do |treatment| %>
+    <tr>
+      <td><%= treatment.affected_on %></td>
+      <%# binding.irb%>
+      <td><%= treatment.drug_name %></td>
+      <td><%= treatment.content %></td>
+      <td><%= treatment.advice %></td>
+      <td><%= link_to 'Show', disease_treatment_path(treatment, id: treatment.id) %></td>
+      <td><%= link_to 'Edit', edit_disease_treatment_path(treatment, id: treatment.id) %></td>
+      <td>
+        <%= link_to 'Destroy', disease_treatment_path(treatment, id: treatment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%#= link_to 'New expenses', new_disease_expense_path(@disease) %>
+<%= link_to '疾患一覧', diseases_path %>|
+<%= link_to '情報登録', new_disease_treatment_path %> |
