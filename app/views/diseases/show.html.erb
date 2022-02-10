@@ -14,5 +14,5 @@
 <%= link_to 'Edit', edit_disease_path(@disease) %> |
 <%= link_to 'Back', root_path %>|
 <%= link_to "情報一覧", "/diseases/#{@disease.id}/treatments" %>|
-<%= link_to "治療費一覧", "/diseases/#{@disease.id}/expenses" %>|
+<%= link_to "治療費一覧", "/diseases/#{@disease.id}/expenses",id: @disease %>|
 <%# "/疾患/#{@疾患.id}/治療費" %>

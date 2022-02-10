@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.where(disease_id: params[:disease_id] )
   end
 
   # GET /users/1 or /users/1.json
