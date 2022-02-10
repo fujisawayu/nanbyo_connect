@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <p>
   <strong>Number:</strong>
   <%= @disease.number %>
@@ -9,6 +12,16 @@
   <strong>Name:</strong>
   <%= @disease.name %>
 </p>
+
+<p>コメント一覧</p>
+
+<div id="comments_area">
+  <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/index', locals: { comments: @comments, disease: @disease } %>
+</div>
+
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
 
 <%= link_to 'Edit', edit_disease_path(@disease) %> |

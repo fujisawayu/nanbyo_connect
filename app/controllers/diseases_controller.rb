@@ -7,6 +7,8 @@ class DiseasesController < ApplicationController
   end
 
   def show
+    @comments = @disease.comments
+    @comment = @disease.comments.build
   end
 
   def new
