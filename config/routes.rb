@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'tops#index'
-  # get 'tops', to: 'tops#index'
  
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
