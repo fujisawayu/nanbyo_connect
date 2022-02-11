@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ mypage edit update]
+  before_action :set_user, only: %i[ show edit update ]
 
   def index
     @users = User.all
@@ -9,11 +9,18 @@ class UsersController < ApplicationController
   def show
   end
 
+  def mypage
+    redirect_to user_path(current_user)
+  end
+
   def new
     @user = User.new
   end
 
   def edit
+    unless @user == current_user
+    redirect_to user_path(@user)
+    end
   end
 
   def create
@@ -32,8 +39,8 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+      if current_user.update(user_params)
+        format.html { redirect_to user_path(current_user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }

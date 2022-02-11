@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+<% if user_signed_in? && @user == current_user %>
+<h1>マイページ</h1>
+<% else %>
+<h1>ユーザーページ</h1>
+<% end %>
+
+<strong>Email:</strong>
+<%= @user.email %>
 </p>
 
 <p>
@@ -35,5 +40,8 @@
   <%= @user.classification %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'ホームに戻る', root_path %>
+<%#= link_to 'Edit', edit_user_path(@user) %> |
+<%#= link_to 'ホームに戻る', root_path %>
+<% if user_signed_in? && @user == current_user %>
+<%= link_to "プロフィール編集", edit_user_path(current_user) %>
+<% end %>
