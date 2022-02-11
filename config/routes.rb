@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'tops#index'
-  # get 'tops', to: 'tops#index'
  
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
@@ -20,6 +18,9 @@ Rails.application.routes.draw do
     resources :treatments
     resources :expenses 
     resources :comments, only: [:create, :destroy, :edit, :update]
+    collection do
+      get 'search'
+    end
   end
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'

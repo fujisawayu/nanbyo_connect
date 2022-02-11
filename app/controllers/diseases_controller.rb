@@ -1,6 +1,7 @@
 class DiseasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_disease, only: %i[ show edit update destroy ]
+  before_action :set_q, only: [:index, :search]
 
   def index
     @diseases = Disease.all
@@ -53,12 +54,20 @@ class DiseasesController < ApplicationController
     end
   end
 
-  private
-    def set_disease
-      @disease = Disease.find(params[:id])
-    end
+  def search
+    @results = @q.result
+  end
 
-    def disease_params
-      params.require(:disease).permit(:id, :name, :number)
-    end
+  private
+  def set_q
+    @q = Disease.ransack(params[:q])
+  end
+
+  def set_disease
+    @disease = Disease.find(params[:id])
+  end
+
+  def disease_params
+    params.require(:disease).permit(:id, :name, :number)
+  end
 end
