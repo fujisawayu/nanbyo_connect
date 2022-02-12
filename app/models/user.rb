@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  
+  has_many :onsets, dependent: :destroy
+  #has_many :onset_diseases, through: :onsets, source: :disease
 
   mount_uploader :image, ImageUploader
 
@@ -19,5 +22,17 @@ class User < ApplicationRecord
       user.admin = true
       # user.name = "ゲスト" なども必要
     end
+  end
+
+  def onset(disease)
+    onsets_diseases << disease
+  end
+
+  def unonset(disease)
+    onsets_diseases.destroy(disease)
+  end
+# お気に入りしているかどうか
+  def onsets?(disease)
+    onsets.where(disease_id: :disease.id).exists?
   end
 end
