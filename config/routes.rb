@@ -19,11 +19,12 @@ Rails.application.routes.draw do
   resources :diseases do
     resources :treatments
     resources :expenses 
-    resources :comments, only: [:create, :destroy, :edit, :update]
+    resources :comments, only: %i[create destroy edit update]
     collection do
       get 'search'
     end
   end
+  resources :onsets, only: %i[create destroy]
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
