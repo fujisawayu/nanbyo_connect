@@ -1,0 +1,13 @@
+class OnsetsController < ApplicationController
+
+  def create
+    onset = current_user.onsets.create(disease_id: params[:disease_id])
+    redirect_to diseases_path, notice: "#{onset.disease.name}を登録しました"
+  end
+
+  def destroy
+    onset = current_user.onsets.find_by(id: params[:id]).destroy
+    redirect_to diseases_path, notice: "#{onset.disease.name}を登録解除しました"
+  end
+
+end
