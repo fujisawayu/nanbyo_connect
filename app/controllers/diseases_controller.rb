@@ -10,6 +10,7 @@ class DiseasesController < ApplicationController
   def show
     @comments = @disease.comments
     @comment = @disease.comments.build
+    @onset = current_user.onsets.find_by(disease_id: @disease.id)
   end
 
   def new

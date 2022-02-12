@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_053409) do
+ActiveRecord::Schema.define(version: 2022_02_11_124502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2022_02_10_053409) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["disease_id"], name: "index_expenses_on_disease_id"
+  end
+
+  create_table "onsets", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "disease_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disease_id"], name: "index_onsets_on_disease_id"
+    t.index ["user_id"], name: "index_onsets_on_user_id"
   end
 
   create_table "treatments", force: :cascade do |t|
@@ -86,5 +95,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_053409) do
 
   add_foreign_key "comments", "diseases"
   add_foreign_key "expenses", "diseases"
+  add_foreign_key "onsets", "diseases"
+  add_foreign_key "onsets", "users"
   add_foreign_key "treatments", "diseases"
 end

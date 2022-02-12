@@ -13,15 +13,18 @@ Rails.application.routes.draw do
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
 
-  resources :users
+  resources :users, only: %i[ show edit update ]
+  get '/mypage' => 'users#mypage'
+
   resources :diseases do
     resources :treatments
     resources :expenses 
-    resources :comments, only: [:create, :destroy, :edit, :update]
+    resources :comments, only: %i[create destroy edit update]
     collection do
       get 'search'
     end
   end
+  resources :onsets, only: %i[create destroy]
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
