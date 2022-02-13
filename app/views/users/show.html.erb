@@ -46,5 +46,7 @@
 <%#= link_to 'Edit', edit_user_path(@user) %> |
 <%#= link_to 'ホームに戻る', root_path %>
 <% if user_signed_in? && @user == current_user %>
+<%= link_to '登録疾患', onsets_path %>|
+<%= link_to 'Back', root_path %>|
 <%= link_to "プロフィール編集", edit_user_path(current_user) %>
 <% end %>

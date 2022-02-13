@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
   has_many :onsets, dependent: :destroy
+  has_many :onset_diseases, through: :onsets, source: :disease
   #has_many :onset_diseases, through: :onsets, source: :disease
 
   mount_uploader :image, ImageUploader
