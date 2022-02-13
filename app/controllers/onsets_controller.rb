@@ -1,5 +1,9 @@
 class OnsetsController < ApplicationController
 
+  def index
+    @onsets = current_user.onsets
+  end
+
   def create
     onset = current_user.onsets.create(disease_id: params[:disease_id])
     redirect_to diseases_path, notice: "#{onset.disease.name}を登録しました"

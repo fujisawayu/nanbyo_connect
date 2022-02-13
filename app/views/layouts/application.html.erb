@@ -2,41 +2,86 @@
 <html>
 
 <head>
-  <title>NanbyoConnect</title>
+  <title>Nanbyo Connect</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
+<p class="display-4">Nanbyo Connect</p>
+<header>
+
+</header>
 
 <body>
-  <header>
-    <%#menu_ber記載%>
-    <%# if user_signed_in? %>
-    <%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%# else %>
-    <% unless user_signed_in? %>
-    <%= link_to "新規登録", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-    <%= link_to 'ゲスト管理者ログイン（閲覧用）', users_admin_guest_sign_in_path, method: :post %>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <!-- ナビゲーションメニュー -->
+  <% if user_signed_in? %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <%= link_to "ホーム", root_path, class: "navbar-brand text-dark" %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ">
+        <%= link_to "マイページ", user_path(current_user.id), class: "nav-link text-dark" %>
+        <%= link_to "疾患選択", diseases_path, class: "nav-link text-dark" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "nav-link text-dark" %>
+        <% end %>
+      </div>
+  </nav>
+
+
+  <% unless user_signed_in? %>
+  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+  <%= link_to 'ゲスト管理者ログイン（閲覧用）', users_admin_guest_sign_in_path, method: :post %>
+  <% end %>
+  <% if user_signed_in? %>
+  <% if current_user.admin? %>
+  <%= link_to "管理者権限", rails_admin_path %>
+  <% end %>
+  <% else %>
+  <%= link_to "新規登録", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+  <% end %>
+
+  <div>
+    <% if notice %>
+    <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert alert-error"><%= alert %></p>
     <% end %>
 
-    <div>
-      <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-      <% end %>
-
-      <%= yield %>
-    </div>
+    <%= yield %>
+  </div>
 </body>
 
-<%#<footer>
-  <p>©︎ 2022 NanbyoConnect</p>
-</footer>#%>
+<!-- フッター -->
+<footer class="text-center bg-dark text-white">
+  <p class="py-3">©︎ 2022 Nanbyo Connect</p>
+</footer>
 
 </html>
