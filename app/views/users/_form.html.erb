@@ -12,6 +12,15 @@
 <% end %>
 
 <div class="field">
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+  <% unless @user.image.blank? %>
+  <%= image_tag @user.image.url, size: '150x150' %>
+  <% end %>
+
+</div>
+
+<div class="field">
   <%= form.label :email %>
   <%= form.text_field :email %>
 </div>
@@ -22,13 +31,18 @@
 </div>
 
 <div class="field">
+  <%= form.label :age %>
+  <%= form.select :age, User.ages.keys, {} %>
+</div>
+
+<div class="field">
   <%= form.label :birthday %>
-  <%= form.date_select :birthday %>
+  <%= form.date_select :birthday, {start_year:Time.now.year-100, end_year:Time.now.year} %>
 </div>
 
 <div class="field">
   <%= form.label :prefecture %>
-  <%= form.number_field :prefecture %>
+  <%= form.select :prefecture, User.prefectures.keys, {} %>
 </div>
 
 <div class="field">
@@ -37,14 +51,8 @@
 </div>
 
 <div class="field">
-  <%= form.label :image %>
-  <%= form.file_field :image %>
-  <%= image_tag @user.image.url, size: '150x150' %>
-</div>
-
-<div class="field">
   <%= form.label :classification %>
-  <%= form.number_field :classification %>
+  <%= form.select :classification, User.classifications.keys, {} %>
 </div>
 
 <div class="actions">
