@@ -6,6 +6,13 @@
 <h1>ユーザーページ</h1>
 <% end %>
 
+<% unless @user.image.blank? %>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.image.url, size: '150x150' %>
+</p>
+<% end %>
+
 <strong>Email:</strong>
 <%= @user.email %>
 </p>
@@ -14,6 +21,12 @@
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @user.age %>
+</p>
+
 
 <p>
   <strong>Birthday:</strong>
@@ -30,13 +43,6 @@
   <%= @user.self_introduction %>
 </p>
 
-<% if @user.image.present? %>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @user.image.url, size: '150x150' %>
-</p>
-<% end %>
-
 
 <p>
   <strong>Classification:</strong>
@@ -46,7 +52,7 @@
 <%#= link_to 'Edit', edit_user_path(@user) %> |
 <%#= link_to 'ホームに戻る', root_path %>
 <% if user_signed_in? && @user == current_user %>
-<%= link_to '登録疾患', onsets_path %>|
+<%= link_to '登録した疾患', onsets_path %>|
 <%= link_to 'Back', root_path %>|
 <%= link_to "プロフィール編集", edit_user_path(current_user) %>
 <% end %>

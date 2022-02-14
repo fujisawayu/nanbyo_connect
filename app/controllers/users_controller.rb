@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[ mypage edit update]
   before_action :set_user, only: %i[ show edit update ]
-
+  before_action :prohibit_access
   def index
     @users = User.all
   end
@@ -64,6 +64,10 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :name, :birthday, :prefecture, :self_introduction, :image, :image_cache, :classification)
+      params.require(:user).permit(:email, :name, :birthday, :prefecture, :self_introduction, :image, :image_cache, :classification, :age)
+    end
+
+    def prohibit_access
+      redirect_to  root_path, notice: 'アクセス権がありません' unless @user.id == current_user.id
     end
 end
