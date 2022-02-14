@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
   has_many :onsets, dependent: :destroy
   has_many :onset_diseases, through: :onsets, source: :disease
-  #has_many :onset_diseases, through: :onsets, source: :disease
+  has_many :comments, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 
