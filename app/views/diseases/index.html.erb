@@ -22,8 +22,11 @@
       <td><%= disease.number %></td>
       <td><%= disease.name %></td>
       <td><%= link_to 'Show', disease %></td>
+
+      <% if current_user.admin? %>
       <td><%= link_to 'Edit', edit_disease_path(disease) %></td>
       <td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
