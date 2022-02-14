@@ -1,13 +1,30 @@
-<ul>
-  <% comments.each do |comment| %>
-  <% if comment.id.present? %>
-  <li>
-    <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
-    <p><%= comment.content %></p>
-    <p><%= link_to "コメント編集", edit_disease_comment_path(disease, comment), remote: true %></p>
-    <p><%= link_to "コメント削除",disease_comment_path(comment.disease_id, comment.id), method: :delete, remote: true,
-                                        data: { confirm: "本当に削除しますか?"} %></p>
-  </li>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>年齢</th>
+      <th>エリア</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <p id="notice"><%= notice %></p>
+
+  <tbody>
+    <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+    <tr>
+      <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
+      <td><%= comment.user.name %></td>
+      <td><%= comment.user.age %></td>
+      <td><%= comment.user.prefecture %></td>
+      <td><%= comment.content %></td>
+      <% if comment.user_id == current_user.id%>
+      <td><%= link_to "コメント編集", edit_disease_comment_path(disease, comment), remote: true %></td>
+      <td><%= link_to "コメント削除",disease_comment_path(comment.disease_id, comment.id), method: :delete, remote: true,
+                                        data: { confirm: "本当に削除しますか?"} %></td>
+    </tr>
+  </tbody>
   <% end %>
   <% end %>
-</ul>
+  <% end %>
+</table>
