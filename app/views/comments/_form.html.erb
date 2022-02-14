@@ -9,13 +9,26 @@
   </ul>
 </div>
 <% end %>
-
-<div class="field">
-  <%= form.label :content %>
-  <%= form.text_area :content %>
-</div>
-
-<div class="actions">
-  <%= form.submit %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>年齢</th>
+      <th>エリア</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <div class="field">
+      <tr>
+        <td><%= current_user.name %></td>
+        <td><%= current_user.age %></td>
+        <td><%= current_user.prefecture %></td>
+        <td><%= form.label :コメント %></td>
+        <td><%= form.text_area :content, size: "50x3" %></td>
+        <td class="actions"> <%= form.submit %></td>
+    </div>
+    </tr>
+  </tbody>
+</table>
 <% end %>
