@@ -19,10 +19,15 @@
       <td><%= expense.drug_cost %></td>
       <td><%= expense.other_cost %></td>
       <td><%= link_to 'Show', disease_expense_path(expense, id: expense.id) %></td>
+
+
+      <%# if @expenses.select(:disease_id) 編集 == current_user.id %>
       <td><%= link_to 'Edit', edit_disease_expense_path(expense, id: expense.id) %></td>
       <td>
         <%= link_to 'Destroy', disease_expense_path(expense, id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
+      <%# end %>
+
     </tr>
     <% end %>
   </tbody>
