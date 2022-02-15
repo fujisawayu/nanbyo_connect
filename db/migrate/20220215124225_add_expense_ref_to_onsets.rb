@@ -1,0 +1,5 @@
+class AddExpenseRefToOnsets < ActiveRecord::Migration[6.0]
+  def change
+    add_reference :onsets, :expenses, foreign_key: true
+  end
+end
