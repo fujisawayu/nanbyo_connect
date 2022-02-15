@@ -14,8 +14,9 @@
   <tbody>
     <% @expenses.each do |expense| %>
     <tr>
+      <td><%#= expense.disease.onset_users.find(current_user.id).name%>
+      <td><%= expense.user.name %></td>
       <td><%= expense.treatment_cost %></td>
-      <%# binding.irb%>
       <td><%= expense.drug_cost %></td>
       <td><%= expense.other_cost %></td>
       <td><%= link_to 'Show', disease_expense_path(expense, id: expense.id) %></td>

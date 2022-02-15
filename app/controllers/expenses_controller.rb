@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_expense, only: %i[ show edit update destroy ]
+  before_action :set_expense, only: %i[  show edit update destroy ]
 
   def index
     @expenses = Expense.where(disease_id: params[:disease_id] )
@@ -20,6 +20,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.disease_id = params[:disease_id]
+    @expense.user_id = current_user.id
 
     respond_to do |format|
       if @expense.save
@@ -59,6 +60,6 @@ class ExpensesController < ApplicationController
     end
 
     def expense_params
-      params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id)
+      params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id, :user_id)
     end
 end
