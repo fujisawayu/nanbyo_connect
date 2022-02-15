@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  diagnose_id: 1
+  severitie_id: 1
+  hierarchie_id: 1
+  long_term_id: 1
+  remark_id: 1
+
+two:
+  diagnose_id: 1
+  severitie_id: 1
+  hierarchie_id: 1
+  long_term_id: 1
+  remark_id: 1
