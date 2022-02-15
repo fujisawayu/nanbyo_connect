@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
   end
   resources :onsets, only: %i[create destroy index]
+  resources :events
   
   post '/diseases/guest_sign_in', to: 'diseases#guest_sign_in'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

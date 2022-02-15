@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Scheduled on</th>
+      <th>Place</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <td><%= event.scheduled_on %></td>
+      <td><%= event.place %></td>
+      <td><%= event.title %></td>
+      <td><%= event.content %></td>
+      <td><%= link_to 'Show', event %></td>
+      <% if current_user.admin? %>
+      <td><%= link_to 'Edit', edit_event_path(event) %></td>
+      <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>

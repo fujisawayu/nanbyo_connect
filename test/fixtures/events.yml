@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scheduled_on: 2022-02-14
+  place: MyString
+  title: MyString
+  content: MyText
+
+two:
+  scheduled_on: 2022-02-14
+  place: MyString
+  title: MyString
+  content: MyText
