@@ -1,0 +1,35 @@
+<h1>Simulations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Diagnose</th>
+      <th>Severitie</th>
+      <th>Hierarchie</th>
+      <th>Long term</th>
+      <th>Remark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @simulations.each do |simulation| %>
+    <tr>
+      <td><%= simulation.diagnose_id %></td>
+      <td><%= simulation.severitie_id %></td>
+      <td><%= simulation.hierarchie_id %></td>
+      <td><%= simulation.long_term_id %></td>
+      <td><%= simulation.remark_id %></td>
+      <td><%= link_to 'Show', simulation %></td>
+      <% if current_user.admin? %>
+      <td><%= link_to 'Edit', edit_simulation_path(simulation) %></td>
+      <td><%= link_to 'Destroy', simulation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Simulation', new_simulation_path %>
