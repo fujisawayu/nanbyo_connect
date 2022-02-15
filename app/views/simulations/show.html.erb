@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<%#メソッド化して場所を移す%>
+
 <% @nintei =  @simulation.severitie_id ==1 && @simulation.diagnose_id == 1 %>
 <% @seiho =  @nintei == true && @simulation.hierarchie_id == 1 %>
 <% @kokyuki = @nintii == true && @simulation.remark_id == 1%>
@@ -36,19 +37,11 @@
 
 <% end %>
 
-
-
-<%# ここまで確認済み %>
-
+<%# ここまで確認済み リファクタリング必須%>
 
 
 
 
-<%#= @simulation.diagnose_id %>
-<%#= @simulation.severitie_id %>
-<%#= @simulation.hierarchie_id %>
-<%#= @simulation.long_term_id %>
-<%#= @simulation.remark_id %>
-
-<%= link_to 'Edit', edit_simulation_path(@simulation) %> |
-<%= link_to 'Back', simulations_path %>
+<%#= link_to 'Edit', edit_simulation_path(@simulation) %>
+<%= link_to 'Back', new_simulation_path %>
+<%= link_to 'ホームに戻る', root_path %>
