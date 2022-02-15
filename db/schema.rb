@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_15_124225) do
+ActiveRecord::Schema.define(version: 2022_02_15_141100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,9 @@ ActiveRecord::Schema.define(version: 2022_02_15_124225) do
     t.bigint "disease_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["disease_id"], name: "index_expenses_on_disease_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
   create_table "onsets", force: :cascade do |t|
@@ -58,9 +60,7 @@ ActiveRecord::Schema.define(version: 2022_02_15_124225) do
     t.bigint "disease_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "expenses_id"
     t.index ["disease_id"], name: "index_onsets_on_disease_id"
-    t.index ["expenses_id"], name: "index_onsets_on_expenses_id"
     t.index ["user_id"], name: "index_onsets_on_user_id"
   end
 
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 2022_02_15_124225) do
   add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
   add_foreign_key "expenses", "diseases"
+  add_foreign_key "expenses", "users"
   add_foreign_key "onsets", "diseases"
-  add_foreign_key "onsets", "expenses", column: "expenses_id"
   add_foreign_key "onsets", "users"
   add_foreign_key "treatments", "diseases"
 end

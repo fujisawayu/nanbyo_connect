@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :onset_diseases, through: :onsets, source: :disease
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :expenses, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 
