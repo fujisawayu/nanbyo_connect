@@ -48,6 +48,7 @@
       <div class="navbar-nav ">
         <%= link_to "マイページ", user_path(current_user.id), class: "nav-link text-dark" %>
         <%= link_to "疾患選択", diseases_path, class: "nav-link text-dark" %>
+        <%= link_to "医療費助成シミュレーション", new_simulation_path, class: "nav-link text-dark" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "nav-link text-dark" %>
         <% end %>
       </div>
