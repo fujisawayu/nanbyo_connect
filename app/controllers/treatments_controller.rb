@@ -24,7 +24,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.save
-        format.html { redirect_to disease_path(@treatment.disease_id), notice: "Expense was successfully created." }
+        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Expense was successfully created." }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new, status: :unprocessable_entity }
