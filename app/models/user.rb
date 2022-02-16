@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :expenses, dependent: :destroy
+  has_many :treatments, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 
