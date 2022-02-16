@@ -9,7 +9,7 @@ ja:
         name: 疾患名
       user:
         title: タイトル
-        name: 名前
+        name: アカウント名
         email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード

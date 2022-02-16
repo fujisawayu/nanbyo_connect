@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <% if user_signed_in? && @user == current_user %>
-<h1>マイページ</h1>
+<h1><%= @user.name %>さんのマイページ</h1>
 <% else %>
 <h1>ユーザーページ</h1>
 <% end %>
@@ -27,15 +26,14 @@
   <%= @user.age %>
 </p>
 
+<p>
+  <strong>Prefecture:</strong>
+  <%= @user.prefecture %>
+</p>
 
 <p>
   <strong>Birthday:</strong>
   <%= @user.birthday %>
-</p>
-
-<p>
-  <strong>Prefecture:</strong>
-  <%= @user.prefecture %>
 </p>
 
 <p>
@@ -48,6 +46,7 @@
   <strong>Classification:</strong>
   <%= @user.classification %>
 </p>
+<%# userとdisease.idをリレーションする%>
 
 <%#= link_to 'Edit', edit_user_path(@user) %> |
 <%#= link_to 'ホームに戻る', root_path %>

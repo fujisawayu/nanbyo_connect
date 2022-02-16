@@ -1,13 +1,19 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable
   
   has_many :onsets, dependent: :destroy
   has_many :onset_diseases, through: :onsets, source: :disease
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :expenses, dependent: :destroy
+  has_many :treatments, dependent: :destroy
 
   mount_uploader :image, ImageUploader
+
+  validates :name, presence: true
+  validates :age, presence: true
+  validates :prefecture, presence: true
 
   enum prefecture:{
     "---":0,
@@ -36,7 +42,14 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now
-      # user.name = "ゲスト" なども必要
+      user.admin = false
+      user.name = "ゲスト"
+      user.age = "30代"
+      user.birthday = "2022-02-22"
+      user.prefecture = "東京都"
+      user.self_introduction =  "ゲストです。"
+      user.classification =  "本人"
+
     end
   end
 
@@ -45,7 +58,12 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now
       user.admin = true
-      # user.name = "ゲスト" なども必要
+      user.name = "ゲスト管理者"
+      user.age = "30代"
+      user.birthday = "2022-01-01"
+      user.prefecture = "東京都"
+      user.self_introduction =  "ゲスト管理者です。"
+      user.classification =  "本人"
     end
   end
 

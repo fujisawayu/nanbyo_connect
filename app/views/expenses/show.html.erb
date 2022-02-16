@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>名前:</strong>
+  <%= @expense.user.name %>
+</p>
 <p>
   <strong>treatment_cost:</strong>
   <%= @expense.treatment_cost %>
@@ -8,6 +11,7 @@
   <strong>drug_cost:</strong>
   <%= @expense.drug_cost %>
 </p>
+
 <p>
   <strong>other_cost:</strong>
   <%= @expense.other_cost %>
