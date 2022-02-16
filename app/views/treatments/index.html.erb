@@ -15,16 +15,19 @@
   <tbody>
     <% @treatments.each do |treatment| %>
     <tr>
+      <td><%= treatment.user.name %></td>
       <td><%= treatment.affected_on %></td>
-      <%# binding.irb%>
       <td><%= treatment.drug_name %></td>
       <td><%= treatment.content %></td>
       <td><%= treatment.advice %></td>
-      <td><%= link_to 'Show', disease_treatment_path(treatment, id: treatment.id) %></td>
+      <%#= link_to 'Show', disease_treatment_path(treatment, id: treatment.id) %>
+      <% if treatment.user_id == current_user.id %>
+
       <td><%= link_to 'Edit', edit_disease_treatment_path(treatment, id: treatment.id) %></td>
       <td>
         <%= link_to 'Destroy', disease_treatment_path(treatment, id: treatment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

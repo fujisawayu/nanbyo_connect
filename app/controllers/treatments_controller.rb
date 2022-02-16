@@ -20,10 +20,11 @@ class TreatmentsController < ApplicationController
   def create
     @treatment = Treatment.new(treatment_params)
     @treatment.disease_id = params[:disease_id]
+    @treatment.user_id = current_user.id
 
     respond_to do |format|
       if @treatment.save
-        format.html { redirect_to diseases_path(@treatment.disease_id), notice: "Expense was successfully created." }
+        format.html { redirect_to disease_path(@treatment.disease_id), notice: "Expense was successfully created." }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,6 +60,6 @@ class TreatmentsController < ApplicationController
     end
 
     def treatment_params
-      params.require(:treatment).permit(:affected_on, :drug_name, :content, :advice, :disease_id)
+      params.require(:treatment).permit(:affected_on, :drug_name, :content, :advice, :disease_id, :user_id)
     end
 end

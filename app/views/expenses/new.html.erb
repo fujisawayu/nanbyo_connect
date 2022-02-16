@@ -2,8 +2,8 @@
 
 <%= form_with(model: [@disease, @expense], local: true) do |form| %>
 <div class="field">
-  <%= form.label :treatment_cost %>
-  <%= form.text_field :treatment_cost %>
+  <%= form.label :treatment %>
+  <%= form.number_field :treatment_cost,in: 0..10000000 ,placeholder: "月の平均" %>
 </div>
 
 <div class="field">

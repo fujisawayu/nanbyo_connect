@@ -3,9 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>treatment_cost</th>
-      <th>drug_cost</th>
-      <th>other_cost</th>
+      <th>名前</th>
+      <th>年齢</th>
+      <th>エリア</th>
+      <th>治療費</th>
+      <th>薬剤費</th>
+      <th>その他のコスト</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,20 +17,23 @@
   <tbody>
     <% @expenses.each do |expense| %>
     <tr>
-      <td><%#= expense.disease.onset_users.find(current_user.id).name%>
+      <%#= expense.disease.onset_users.find(current_user.id).name%>
       <td><%= expense.user.name %></td>
-      <td><%= expense.treatment_cost %></td>
-      <td><%= expense.drug_cost %></td>
-      <td><%= expense.other_cost %></td>
-      <td><%= link_to 'Show', disease_expense_path(expense, id: expense.id) %></td>
+      <td><%= expense.user.age %></td>
+      <td><%= expense.user.prefecture %></td>
+      <td><%= number_to_currency(expense.treatment_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
+      <td><%= number_to_currency(expense.drug_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
+      <td><%= number_to_currency(expense.other_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
 
+      <%# link_to 'Show', disease_expense_path(expense, id: expense.id) %>
 
-      <%# if @expenses.select(:disease_id) 編集 == current_user %>
+      <% if expense.user_id == current_user.id %>
+
       <td><%= link_to 'Edit', edit_disease_expense_path(expense, id: expense.id) %></td>
       <td>
         <%= link_to 'Destroy', disease_expense_path(expense, id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-      <%# end %>
+      <% end %>
 
     </tr>
     <% end %>
