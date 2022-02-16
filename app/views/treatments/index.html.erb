@@ -3,6 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>名前</th>
+      <th>年齢</th>
+      <th>エリア</th>
       <th>affected_on</th>
       <th>drug_name</th>
       <th>content</th>
@@ -16,6 +19,8 @@
     <% @treatments.each do |treatment| %>
     <tr>
       <td><%= treatment.user.name %></td>
+      <td><%= treatment.user.age %></td>
+      <td><%= treatment.user.prefecture %></td>
       <td><%= treatment.affected_on %></td>
       <td><%= treatment.drug_name %></td>
       <td><%= treatment.content %></td>
