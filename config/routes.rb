@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
+    sessions: "users/sessions",
     passwords: 'users/passwords'
   }
 
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[ show edit update ]
-  get '/mypage' => 'users#mypage'
+
 
   resources :diseases do
     resources :treatments
