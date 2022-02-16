@@ -2,6 +2,7 @@ class DiseasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_disease, only: %i[ show edit update destroy ]
   before_action :set_q, only: [:index, :search]
+  before_action :prohibit_access, only: %i[ new create edit update destroy ]
 
   def index
     @diseases = Disease.all
@@ -70,5 +71,9 @@ class DiseasesController < ApplicationController
 
   def disease_params
     params.require(:disease).permit(:id, :name, :number)
+  end
+
+  def prohibit_access
+    redirect_to  root_path, notice: 'アクセス権がありません' unless current_user.admin?
   end
 end
