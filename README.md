@@ -36,7 +36,7 @@ https://docs.google.com/spreadsheets/d/1_b4SCW6ZNiu6drtGvsKz-Ls4MAD2pYaoVzFS3kiK
 
 ## ER 図
 
-![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/er_diagram.png)
+![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/er_diagram2.png)
 
 ## 画面遷移図
 
