@@ -22,17 +22,17 @@
       <td><%= disease.name %></td>
       <td><%= link_to '情報', disease %></td>
 
-      <% if current_user.admin? %>
-      <td><%= link_to 'Edit', edit_disease_path(disease) %></td>
-      <td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+      <%# <% if current_user.admin? %>
+      <%# <td><%= link_to 'Edit', edit_disease_path(disease) %>
+      <%# <td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%# <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if current_user.admin? %>
-<%= link_to '疾患登録', new_disease_path %>
-<% end %>
+<%# <% if current_user.admin? %>
+<%#= link_to '疾患登録', new_disease_path %>
+<%# <% end %>
 <%= link_to 'ホームに戻る', root_path %>

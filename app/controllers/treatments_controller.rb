@@ -23,11 +23,11 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.new(treatment_params)
     @treatment.disease_id = params[:disease_id]
     @treatment.user_id = current_user.id
-
+    
     respond_to do |format|
       if @treatment.save
-        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Expense was successfully created." }
-        format.json { render :show, status: :created, location: @expense }
+        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully created." }
+        format.json { render :show, status: :created, location: @treatment }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @treatment.errors, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TreatmentsController < ApplicationController
   def update
     respond_to do |format|
       if @treatment.update(treatment_params)
-        format.html { redirect_to disease_path(@treatment.disease_id), notice: "Treatment was successfully updated." }
+        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully updated." }
         format.json { render :show, status: :ok, location: @treatment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class TreatmentsController < ApplicationController
     @treatment.destroy
 
     respond_to do |format|
-      format.html { redirect_to disease_url, notice: "Treatment was successfully destroyed." }
+      format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully destroyed." }
       format.json { head :no_content }
     end
   end

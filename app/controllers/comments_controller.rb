@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js { render :index}
       else
-        format.html { redirect_to disease_path(@disease), notice: '投稿できませんでした...' }
+        format.html { redirect_to disease_path(@disease) }
       end
     end
   end
