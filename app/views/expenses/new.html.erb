@@ -3,17 +3,17 @@
 <%= form_with(model: [@disease, @expense], local: true) do |form| %>
 <div class="field">
   <%= form.label :treatment %>
-  <%= form.number_field :treatment_cost,in: 0..10000000 ,placeholder: "月の平均",step: "1000" %>
+  <%= form.number_field :treatment_cost,in: 0..10000000 ,placeholder: "月の平均",step: "500" %>
 </div>
 
 <div class="field">
   <%= form.label :drug_cost %>
-  <%= form.number_field :drug_cost,in: 0..10000000 ,placeholder: "月の平均",step: "1000" %>
+  <%= form.number_field :drug_cost,in: 0..10000000 ,placeholder: "月の平均",step: "500" %>
 </div>
 
 <div class="field">
   <%= form.label :other_cost %>
-  <%= form.number_field :other_cost,in: 0..10000000 ,placeholder: "月の平均",step: "1000" %>
+  <%= form.number_field :other_cost,in: 0..10000000 ,placeholder: "月の平均",step: "500" %>
 </div>
 
 <div class="actions">
