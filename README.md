@@ -7,13 +7,13 @@
 
 ## 就業 Term の技術
 
-- AWS EC2
 - devise
 - コメント機能
 
 ## カリキュラム外の技術
 
 - ransack
+- active_hash
 
 ## 実行手順
 
@@ -22,6 +22,7 @@ $ git clone git@github.com:fujisawagithub/nanbyo_connect.git
 $ cd nanbyo_connect
 $ bundle install
 $ rails db:create db:migrate
+$ rails db:seed
 $ rails s
 ```
 
