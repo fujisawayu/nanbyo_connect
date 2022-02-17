@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_040153) do
+ActiveRecord::Schema.define(version: 2022_02_17_165216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2022_02_17_040153) do
   end
 
   create_table "diseases", force: :cascade do |t|
-    t.string "name"
-    t.string "number"
+    t.string "name", null: false
+    t.string "number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 2022_02_17_040153) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.integer "treatment_cost"
-    t.integer "drug_cost"
-    t.integer "other_cost"
+    t.integer "treatment_cost", null: false
+    t.integer "drug_cost", null: false
+    t.integer "other_cost", null: false
     t.bigint "disease_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(version: 2022_02_17_040153) do
   end
 
   create_table "treatments", force: :cascade do |t|
-    t.date "affected_on"
-    t.string "drug_name"
-    t.text "content"
-    t.text "advice"
+    t.date "affected_on", null: false
+    t.string "drug_name", null: false
+    t.text "content", null: false
+    t.text "advice", null: false
     t.bigint "disease_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
