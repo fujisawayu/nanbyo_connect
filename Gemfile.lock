@@ -336,7 +336,6 @@ DEPENDENCIES
   rexml
   rspec-rails
   sass-rails (>= 6)
-  selenium-webdriver
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
