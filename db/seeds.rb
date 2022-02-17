@@ -21,7 +21,8 @@ User.create(
   self_introduction: 'ゲスト管理者です。',
   classification: '本人',
   birthday: Faker::Date.birthday(max_age: 90),
-  admin: true
+  admin: true,
+  image: open("app/assets/images/test_image_1.png")
 )
 
 Disease.create!([
@@ -365,14 +366,14 @@ Disease.create!([
   )
   end
   
-  5.times do 
-    Expense.create(
-      treatment_cost: 70000,
-      drug_cost: 50000,
-      other_cost: 30000,
-      disease_id: rand(1..5),
-      user_id: rand(1..11),
-    )
+5.times do 
+  Expense.create(
+    treatment_cost: 70000,
+    drug_cost: 50000,
+    other_cost: 30000,
+    disease_id: rand(1..5),
+    user_id: rand(1..11),
+  )
   end
 
 10.times do 
