@@ -1,7 +1,7 @@
 class SimulationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_simulation, only: %i[ show edit update destroy ]
-
+  before_action :prohibit_access, only: %i[index edit update destroy ]
   def index
     @simulations = Simulation.all
   end
@@ -21,7 +21,7 @@ class SimulationsController < ApplicationController
 
     respond_to do |format|
       if @simulation.save
-        format.html { redirect_to simulation_url(@simulation), notice: "Simulation was successfully created." }
+        format.html { redirect_to simulation_url(@simulation)}
         format.json { render :show, status: :created, location: @simulation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,5 +58,9 @@ class SimulationsController < ApplicationController
 
     def simulation_params
       params.require(:simulation).permit(:diagnose_id, :severitie_id, :hierarchie_id, :long_term_id, :remark_id)
+    end
+
+    def prohibit_access
+      redirect_to  root_path, notice: 'アクセス権がありません' unless current_user.admin?
     end
 end
