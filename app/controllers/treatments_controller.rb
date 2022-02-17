@@ -1,9 +1,11 @@
 class TreatmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_treatment, only: %i[ show edit update destroy ]
+  before_action :prohibit_access, only: %i[show edit update destroy ]
 
   def index
     @treatments = Treatment.where(disease_id: params[:disease_id] )
+    @disease = Disease.find(params[:disease_id])
   end
 
   def show
@@ -55,11 +57,15 @@ class TreatmentsController < ApplicationController
   end
 
   private
-    def set_treatment
-      @treatment = Treatment.find(params[:id])
-    end
+  def set_treatment
+    @treatment = Treatment.find(params[:id])
+  end
 
-    def treatment_params
-      params.require(:treatment).permit(:affected_on, :drug_name, :content, :advice, :disease_id, :user_id)
-    end
+  def treatment_params
+    params.require(:treatment).permit(:affected_on, :drug_name, :content, :advice, :disease_id, :user_id)
+  end
+
+  def prohibit_access
+    redirect_to  root_path, notice: 'アクセス権がありません' unless current_user.admin?
+  end
 end
