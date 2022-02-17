@@ -1,5 +1,5 @@
 10.times do |n|
-  User.create(
+  User.create!(
     name: "user#{n+1}",
     email: "user#{n+1}@test.com",
     password: 'password',
@@ -12,7 +12,7 @@
   )
 end
 
-User.create(
+User.create!(
   name: 'ゲスト管理者',
   email: 'admin@test.com',
   password: 'admin01',
@@ -21,7 +21,8 @@ User.create(
   self_introduction: 'ゲスト管理者です。',
   classification: '本人',
   birthday: Faker::Date.birthday(max_age: 90),
-  admin: true
+  admin: true,
+  image: open("app/assets/images/test_image_1.png")
 )
 
 Disease.create!([
@@ -356,7 +357,7 @@ Disease.create!([
 ])
 
 5.times do 
-  Expense.create(
+  Expense.create!(
     treatment_cost: 100000,
     drug_cost: 80000,
     other_cost: 40000,
@@ -365,18 +366,18 @@ Disease.create!([
   )
   end
   
-  5.times do 
-    Expense.create(
-      treatment_cost: 70000,
-      drug_cost: 50000,
-      other_cost: 30000,
-      disease_id: rand(1..5),
-      user_id: rand(1..11),
-    )
+5.times do 
+  Expense.create!(
+    treatment_cost: 70000,
+    drug_cost: 50000,
+    other_cost: 30000,
+    disease_id: rand(1..5),
+    user_id: rand(1..11),
+  )
   end
 
 10.times do 
-Treatment.create(
+Treatment.create!(
   affected_on: Faker::Date.between(from: 50.days.ago, to: Date.today),
   drug_name: Faker::Science.modifier,
   content: Faker::Quote.jack_handey,
@@ -387,7 +388,7 @@ Treatment.create(
 end
 
 10.times do
-Comment.create(
+Comment.create!(
   disease_id: rand(1..5),
   content: Faker::Quote.singular_siegler,
   user_id: rand(1..11),
@@ -395,7 +396,7 @@ Comment.create(
 end
 
 10.times do
-Onset.create(
+Onset.create!(
   disease_id: rand(1..5),
   user_id: rand(1..11),
 )
