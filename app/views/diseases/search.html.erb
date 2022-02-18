@@ -11,13 +11,13 @@
   <tbody>
     <% @results.each do |disease| %>
     <tr>
-      <td><%= disease.number %></td>
-      <td><%= disease.name %></td>
-      <td><%= link_to 'Show', disease %></td>
-      <% if current_user.admin? %>
-      <td><%= link_to 'Edit', edit_disease_path(disease) %></td>
-      <td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+      <td><%= link_to disease.number, disease %></td>
+      <td><%= link_to disease.name, disease %></td>
+      <%#<td><%= link_to '情報', disease %>
+      <%# if current_user.admin? %>
+      <%#<td><%= link_to 'Edit', edit_disease_path(disease) %>
+      <%#<td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%# end %>
     </tr>
     <% end %>
   </tbody>
