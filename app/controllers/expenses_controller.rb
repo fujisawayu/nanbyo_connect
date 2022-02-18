@@ -28,9 +28,10 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       if @expense.save
   
-        format.html { redirect_to disease_expenses_path(@expense.disease_id), notice: "Expense was successfully created." }
+        format.html { redirect_to disease_expenses_path(@expense.disease_id), notice: "治療費情報を登録しました" }
         format.json { render :show, status: :created, location: @expense }
       else
+        flash.now[:alert] = '未入力の項目があります'
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
@@ -40,7 +41,7 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to disease_expenses_path(@expense.disease_id), notice: "Expense was successfully updated." }
+        format.html { redirect_to disease_expenses_path(@expense.disease_id), notice: "治療費情報を更新しました" }
         format.json { render :show, status: :ok, location: @expense }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to disease_expenses_path(@expense.disease_id), notice: "Expense was successfully destroyed." }
+      format.html { redirect_to disease_expenses_path(@expense.disease_id), notice: "治療費情報を削除しました" }
       format.json { head :no_content }
     end
   end

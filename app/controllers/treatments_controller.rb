@@ -27,9 +27,10 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.save
-        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully created." }
+        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "治療情報を登録しました" }
         format.json { render :show, status: :created, location: @treatment }
       else
+        flash.now[:alert] = '未入力の項目があります'
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @treatment.errors, status: :unprocessable_entity }
       end
@@ -39,7 +40,7 @@ class TreatmentsController < ApplicationController
   def update
     respond_to do |format|
       if @treatment.update(treatment_params)
-        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully updated." }
+        format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "治療情報を更新しました" }
         format.json { render :show, status: :ok, location: @treatment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class TreatmentsController < ApplicationController
     @treatment.destroy
 
     respond_to do |format|
-      format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully destroyed." }
+      format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "治療情報を削除しました" }
       format.json { head :no_content }
     end
   end

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to user_path(current_user), notice: "プロフィールを更新しました"
     else
-      redirect_to edit_user_path(current_user)
+      redirect_to edit_user_path(current_user), notice: "アカウント名(10文字以内)、年齢、エリアは必ず入力してください"
     end
   end
 
