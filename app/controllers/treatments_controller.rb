@@ -23,7 +23,8 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.new(treatment_params)
     @treatment.disease_id = params[:disease_id]
     @treatment.user_id = current_user.id
-    
+    @disease = Disease.find(params[:disease_id]) #validatesエラー
+
     respond_to do |format|
       if @treatment.save
         format.html { redirect_to disease_treatments_path(@treatment.disease_id), notice: "Treatment was successfully created." }
@@ -66,6 +67,6 @@ class TreatmentsController < ApplicationController
   end
 
   def prohibit_access
-    redirect_to  root_path, notice: 'アクセス権がありません' unless current_user.admin?
+    redirect_to  root_path, notice: 'アクセス権がありません' unless @treatment.user_id ==current_user.id
   end
 end

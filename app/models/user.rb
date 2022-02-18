@@ -11,9 +11,7 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :name, presence: true
-  validates :age, presence: true
-  validates :prefecture, presence: true
+  validates :name, presence: true, length: { in: 1..10 }
 
   enum prefecture:{
     "---":0,
@@ -27,11 +25,13 @@ class User < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
     沖縄県:47
   }
+  validates :prefecture, inclusion: { in: User.prefectures.keys[1..47] }
 
   enum age:{
     "-----":1,
     "10歳未満":2,"10代":3,"20代":4,"30代":5,"40代":6,"50代":7,"60代":8,"70代":9,"80代":10,"90代以上":11
   }
+  validates :age, inclusion: { in: User.ages.keys[1..11] }
 
   enum classification:{
     "----":0,

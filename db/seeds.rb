@@ -22,7 +22,7 @@ User.create!(
   classification: '本人',
   birthday: Faker::Date.birthday(max_age: 90),
   admin: true,
-  image: open("app/assets/images/test_image_1.png")
+  image:File.open("app/assets/images/test_image_1.png")
 )
 
 Disease.create!([

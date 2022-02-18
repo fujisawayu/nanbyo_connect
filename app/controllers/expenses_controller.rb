@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_expense, only: %i[  show edit update destroy ]
+  before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :prohibit_access, only: %i[show edit update destroy ]
 
   def index
@@ -22,6 +22,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.disease_id = params[:disease_id]
+    @disease = Disease.find(params[:disease_id])
     @expense.user_id = current_user.id
 
     respond_to do |format|
@@ -65,6 +66,6 @@ class ExpensesController < ApplicationController
       params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id, :user_id)
     end
     def prohibit_access
-      redirect_to  root_path, notice: 'アクセス権がありません' unless current_user.admin?
+      redirect_to  root_path, notice: 'アクセス権がありません' unless @expense.user_id == current_user.id
     end
 end

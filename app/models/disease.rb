@@ -8,4 +8,6 @@ class Disease < ApplicationRecord
   validates :name,  presence: true
   validates :number,  presence: true
 
+  validates :treatments, associated: true
+  validates :expenses, associated: true
 end
