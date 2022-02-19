@@ -29,7 +29,7 @@ RSpec.describe 'comment機能', type: :system do
     context 'コメントを削除する' do
       it '非同期でコメントが削除される' do
         comment_create
-        click_on 'コメント削除'
+        click_on '削除'
         expect {
           page.accept_confirm 'Are you sure？'
           expect(page).to have_content 'コメントが削除されました'
