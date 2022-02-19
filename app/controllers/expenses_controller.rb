@@ -67,6 +67,6 @@ class ExpensesController < ApplicationController
       params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id, :user_id)
     end
     def prohibit_access
-      redirect_to  root_path, notice: 'アクセス権がありません' unless @expense.user_id == current_user.id
+      redirect_to  root_path, alert: 'アクセス権がありません' unless @expense.user_id == current_user.id
     end
 end

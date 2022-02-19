@@ -68,6 +68,6 @@ class TreatmentsController < ApplicationController
   end
 
   def prohibit_access
-    redirect_to  root_path, notice: 'アクセス権がありません' unless @treatment.user_id ==current_user.id
+    redirect_to  root_path, alert: 'アクセス権がありません' unless @treatment.user_id ==current_user.id
   end
 end

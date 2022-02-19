@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to user_path(current_user), notice: "プロフィールを更新しました"
     else
-      redirect_to edit_user_path(current_user), notice: "アカウント名(10文字以内)、年齢、エリアは必ず入力してください"
+      redirect_to edit_user_path(current_user), alert: "アカウント名(10文字以内)、年齢、エリアは必ず入力してください"
     end
   end
 
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def prohibit_access
-      redirect_to  root_path, notice: 'アクセス権がありません' unless @user.id == current_user.id
+      redirect_to  root_path, alert: 'アクセス権がありません' unless @user.id == current_user.id
   end
 end

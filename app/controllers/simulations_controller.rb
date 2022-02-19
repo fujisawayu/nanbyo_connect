@@ -63,7 +63,7 @@ class SimulationsController < ApplicationController
     end
 
     def prohibit_access
-      redirect_to  root_path, notice: 'アクセス権がありません' unless current_user.admin?
+      redirect_to  root_path, alert: 'アクセス権がありません' unless current_user.admin?
     end
 
     def prohibit_show_access

@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :treatment do
     affected_on { DateTime.now }
     drug_name { ' テスト ' }
