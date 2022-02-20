@@ -1,26 +1,21 @@
 <h1>検索結果</h1>
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-dark">
     <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th scope="col">告示番号</th>
+      <th scope="col">名前</th>
     </tr>
   </thead>
 
   <tbody>
     <% @results.each do |disease| %>
     <tr>
-      <td><%= link_to disease.number, disease %></td>
+      <td align="center"><%= link_to disease.number, disease %></td>
       <td><%= link_to disease.name, disease %></td>
-      <%#<td><%= link_to '情報', disease %>
-      <%# if current_user.admin? %>
-      <%#<td><%= link_to 'Edit', edit_disease_path(disease) %>
-      <%#<td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%# end %>
     </tr>
     <% end %>
   </tbody>
 </table>
+
 
 <%= link_to '疾患一覧に戻る', diseases_path %>

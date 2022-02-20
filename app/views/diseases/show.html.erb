@@ -11,6 +11,12 @@
   <%= @disease.name %>
 </p>
 
+<% if @onset.present? %>
+<%= link_to '疾患登録を解除する', onset_path(id: @onset.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+<%= link_to '疾患を登録する', onsets_path(disease_id: @disease.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+
 <p>コメント一覧</p>
 
 <div id="comments_area">
@@ -22,15 +28,8 @@
 <%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
 
-<%= link_to 'Edit', edit_disease_path(@disease) %> |
+<%#= link_to 'Edit', edit_disease_path(@disease) %>
 <%= link_to 'Back', diseases_path %>|
 <%= link_to "情報一覧", "/diseases/#{@disease.id}/treatments",id: @disease %>|
 <%= link_to "治療費一覧", "/diseases/#{@disease.id}/expenses",id: @disease %>|
 <%# "/疾患/#{@疾患.id}/治療費" %>
-
-
-<% if @onset.present? %>
-<%= link_to '自分の登録疾患を解除する', onset_path(id: @onset.id), method: :delete, class: 'btn btn-danger' %>
-<% else %>
-<%= link_to '自分の疾患に登録する', onsets_path(disease_id: @disease.id), method: :post, class: 'btn btn-primary' %>
-<% end %>

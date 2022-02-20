@@ -13,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <!-- Bootstrap CSS -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
@@ -21,7 +22,7 @@
 </head>
 <a class="display-4">Nanbyo Connect</a>
 <% if user_signed_in? %>
-<a class="text-right display-12 "><%= current_user.name %>さん</a>
+<a class="text-right display-12 fas fa-user"><%= current_user.name %>さん</a>
 <% end %>
 <header>
 
@@ -58,7 +59,6 @@
         <% end %>
       </div>
   </nav>
-
 
   <% unless user_signed_in? %>
   <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
