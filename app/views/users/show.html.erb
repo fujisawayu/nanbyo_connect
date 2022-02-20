@@ -4,12 +4,21 @@
 <h1>ユーザーページ</h1>
 <% end %>
 <br>
-<% unless @user.image.blank? %>
+
+<% if @user.image.blank? %>
+<p style="text-align:center">
+  <img src="/assets/icon.png" width="90" height="90">
+</p>
+<% else%>
 <p style="text-align:center">
   <%= image_tag @user.image.url, size: '150x150' %>
 </p>
 <% end %>
-
+<br>
+<div style="text-align:center">
+  <%= link_to '登録した疾患', onsets_path,id: @disease ,class:"btn btn-info btn-lg far fa-calendar-plus "%>
+</div>
+<br>
 
 <p style="text-align:center">
   <strong>Name:</strong>
@@ -52,8 +61,7 @@
 <%#= link_to 'ホームに戻る', root_path %>
 <p style="text-align:center">
   <% if user_signed_in? && @user == current_user %>
-  <%= link_to 'Back', root_path %>|
-  <%= link_to '登録した疾患', onsets_path %>|
+  <%= link_to '戻る', root_path %>/
   <%= link_to "プロフィール編集", edit_user_path(current_user) %>
   <% end %>
 </p>
