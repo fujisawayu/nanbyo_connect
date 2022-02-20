@@ -1,20 +1,21 @@
 <%= form_with(model: [@disease, @treatment], local: true) do |form| %>
-<div class="field">
+<div class="user_field">
   <%= form.label :罹患日 %>
-  <%= form.date_field :affected_on %>
+  <%#= form.date_field :affected_on %>
+  <%= form.date_select :affected_on, {start_year:Time.now.year-100, end_year:Time.now.year} %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :薬剤名 %>
   <%= form.text_field :drug_name %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :内容 %>
   <%= form.text_area :content %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :アドバイス %>
   <%= form.text_area :advice %>
 </div>
