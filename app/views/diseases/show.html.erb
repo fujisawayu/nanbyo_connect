@@ -1,36 +1,32 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<h5 style="text-align:center">告示番号<%= @disease.number %></h5>
+<h2 style="text-align:center"><%= @disease.name %></h2>
+<br>
+<div style="text-align:center">
+  <% if @onset.present? %>
+  <%= link_to '疾患登録を解除する', onset_path(id: @onset.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+  <%= link_to '疾患を登録する', onsets_path(disease_id: @disease.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
 
-<p>
-  <strong>Number:</strong>
-  <%= @disease.number %>
-</p>
+  <%= link_to " 情報一覧", "/diseases/#{@disease.id}/treatments",id: @disease ,class:"btn btn-primary btn-lg far fa-edit "%>
 
-<p>
-  <strong>Name:</strong>
-  <%= @disease.name %>
-</p>
+  <%= link_to " 治療費一覧", "/diseases/#{@disease.id}/expenses",id: @disease ,class:"btn btn-primary btn-lg fas fa-comments-dollar"%>
+</div>
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender上 -->
+<%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
-<p>コメント一覧</p>
+<div style="text-align:center">
+  <%= link_to '戻る', diseases_path %></div>
 
 <div id="comments_area">
   <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'comments/index', locals: { comments: @comments, disease: @disease } %>
 </div>
 
-<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender下 -->
 <%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
 
-<%= link_to 'Edit', edit_disease_path(@disease) %> |
-<%= link_to 'Back', diseases_path %>|
-<%= link_to "情報一覧", "/diseases/#{@disease.id}/treatments",id: @disease %>|
-<%= link_to "治療費一覧", "/diseases/#{@disease.id}/expenses",id: @disease %>|
-<%# "/疾患/#{@疾患.id}/治療費" %>
-
-
-<% if @onset.present? %>
-<%= link_to '自分の登録疾患を解除する', onset_path(id: @onset.id), method: :delete, class: 'btn btn-danger' %>
-<% else %>
-<%= link_to '自分の疾患に登録する', onsets_path(disease_id: @disease.id), method: :post, class: 'btn btn-primary' %>
-<% end %>
+<%#= link_to 'Edit', edit_disease_path(@disease) %>
+<div style="text-align:center">
+  <%= link_to '戻る', diseases_path %></div>

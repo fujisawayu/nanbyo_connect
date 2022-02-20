@@ -1,44 +1,51 @@
 <%= form_with(model: simulation, local: true) do |form| %>
 <% if simulation.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(simulation.errors.count, "error") %> prohibited this simulation from being saved:</h2>
+  <h2 style="text-align:center"><%= pluralize(simulation.errors.count, "件") %>の未入力があります</h2>
 
   <ul>
     <% simulation.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <li style="text-align:center"><%= message %></li>
     <% end %>
   </ul>
 </div>
 <% end %>
-<p>難病指定医により「指定難病」と診断されていますか？</p>
-<div>
+
+<p class='simulation_text'>難病指定医により「指定難病」と診断されていますか？</p>
+<div class=' user_field'>
   <%= form.collection_select(:diagnose_id, Diagnose.all, :id, :name,{include_blank: "---"} ) %>
 </div>
-<p>当該指定難病の重症度分類等に照らして症状の程度が一定以上と認定されていますか？</p>
-<div>
+<br>
+<p class='simulation_text'>当該指定難病の重症度分類等に照らして症状の程度が一定以上と認定されていますか？</p>
+<div class='user_field'>
   <%= form.collection_select(:severitie_id, Severitie.all, :id, :name,{include_blank: "---"} ) %>
 </div>
-<p>階層区分を選択してください</p>
-<p>生活保護</p>
-<p>低所得Ⅰ：本人年収〜80万円</p>
-<p>低所得Ⅱ：本人年収80万円超〜</p>
-<p>一般所得Ⅰ：市町村住民税課税以上7.1万円未満</p>
-<p>一般所得Ⅱ：市町村住民税7.1万円以上25.1万円未満</p>
-<p>上位所得：市町村住民税25.1万円以上</p>
+<br>
+<p class='simulation_text'>階層区分を選択してください</p>
+<p class='simulation_text'>生活保護</p>
+<p class='simulation_text'>低所得Ⅰ：本人年収〜80万円</p>
+<p class='simulation_text'>低所得Ⅱ：本人年収80万円超〜</p>
+<p class='simulation_text'>一般所得Ⅰ：市町村住民税課税以上7.1万円未満</p>
+<p class='simulation_text'>一般所得Ⅱ：市町村住民税7.1万円以上25.1万円未満</p>
+<p class='simulation_text'>上位所得：市町村住民税25.1万円以上</p>
+<br>
 
-<div>
+<div class='user_field'>
   <%= form.collection_select(:hierarchie_id, Hierarchie.all, :id, :name,{include_blank: "---"} ) %>
 </div>
-<p>高額な医療が長期に継続していますか？</p>
-<p>注意：対象となるのは指定難病についての特定医療の月ごとの医療費総額が5万円を超える月が、申請日の月以前12月で既に6回以上ある方です。</p>
-<div>
+<br>
+<p class='simulation_text'>高額な医療が長期に継続していますか？</p>
+<p class='simulation_text'>注意：対象となるのは指定難病についての特定医療の月ごとの医療費総額が5万円を超える月が、申請日の月以前12月で既に6回以上ある方です。</p>
+
+<div class='user_field'>
   <%= form.collection_select(:long_term_id, LongTerm.all, :id, :name,{include_blank: "---"} ) %>
 </div>
-<p>人口呼吸器装着者に該当しますか？</p>
-<div>
+<br>
+<p class='simulation_text'>人口呼吸器装着者に該当しますか？</p>
+<div class='user_field'>
   <%= form.collection_select(:remark_id, Remark.all, :id, :name,{include_blank: "---"} ) %>
 </div>
-
+<br>
 <div class="actions">
   <%= form.submit  value="確認する"%>
 </div>

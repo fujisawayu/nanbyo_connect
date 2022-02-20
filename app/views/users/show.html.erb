@@ -1,56 +1,67 @@
 <% if user_signed_in? && @user == current_user %>
-<h1><%= @user.name %>さんのマイページ</h1>
+<h3 style="text-align:center"><%= @user.name %>さんのマイページ</h3>
 <% else %>
 <h1>ユーザーページ</h1>
 <% end %>
+<br>
 
-<% unless @user.image.blank? %>
-<p>
-  <strong>Image:</strong>
+<% if @user.image.blank? %>
+<p style="text-align:center">
+  <img src="/assets/icon.png" width="90" height="90">
+</p>
+<% else%>
+<p style="text-align:center">
   <%= image_tag @user.image.url, size: '150x150' %>
 </p>
 <% end %>
+<br>
+<div style="text-align:center">
+  <%= link_to ' 登録した疾患', onsets_path,id: @disease ,class:"btn btn-info btn-lg far fa-calendar-plus "%>
+</div>
+<br>
 
-<strong>Email:</strong>
-<%= @user.email %>
-</p>
-
-<p>
+<p style="text-align:center">
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
 
-<p>
+<p style="text-align:center">
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p style="text-align:center">
   <strong>Age:</strong>
   <%= @user.age %>
 </p>
 
-<p>
+<p style="text-align:center">
   <strong>Prefecture:</strong>
   <%= @user.prefecture %>
 </p>
 
-<p>
+<p style="text-align:center">
   <strong>Birthday:</strong>
   <%= @user.birthday %>
 </p>
 
-<p>
+<p style="text-align:center">
   <strong>Self introduction:</strong>
   <%= @user.self_introduction %>
 </p>
 
 
-<p>
+<p style="text-align:center">
   <strong>Classification:</strong>
   <%= @user.classification %>
 </p>
 <%# userとdisease.idをリレーションする%>
 
-<%#= link_to 'Edit', edit_user_path(@user) %> |
+<%#= link_to 'Edit', edit_user_path(@user) %>
 <%#= link_to 'ホームに戻る', root_path %>
-<% if user_signed_in? && @user == current_user %>
-<%= link_to '登録した疾患', onsets_path %>|
-<%= link_to 'Back', root_path %>|
-<%= link_to "プロフィール編集", edit_user_path(current_user) %>
-<% end %>
+<p style="text-align:center">
+  <% if user_signed_in? && @user == current_user %>
+  <%= link_to '戻る', root_path %>/
+  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+  <% end %>
+</p>

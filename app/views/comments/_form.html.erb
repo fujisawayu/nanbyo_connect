@@ -9,26 +9,19 @@
   </ul>
 </div>
 <% end %>
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>年齢</th>
-      <th>エリア</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <div class="field">
-      <tr>
-        <td><%= current_user.name %></td>
-        <td><%= current_user.age %></td>
-        <td><%= current_user.prefecture %></td>
-        <td><%= form.label :コメント %></td>
-        <td><%= form.text_area :content, size: "50x3" %></td>
-        <td class="actions"> <%= form.submit %></td>
-    </div>
-    </tr>
-  </tbody>
-</table>
+<div class="user_field">
+  <% if current_user.image.blank? %>
+  <td> <img src="/assets/icon.png" width="90" height="90">
+    <%else %>
+  <td> <img src=<%= current_user.image %> width="90" height="90">
+    <% end %>
+    <%= current_user.name %>
+    <%= current_user.age %>
+    <%= current_user.prefecture %></td>
+</div>
+<div class="user_field">
+  <%= form.label :コメントはこちらから %>
+  <%= form.text_area :content, size: "50x3" %></div>
+<div class="actions"> <%= form.submit :投稿する %></div>
+
 <% end %>

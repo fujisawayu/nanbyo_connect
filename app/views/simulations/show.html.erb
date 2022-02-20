@@ -3,45 +3,56 @@
 <% @nintei =  @simulation.severitie_id ==1 && @simulation.diagnose_id == 1 %>
 <% @seiho =  @nintei == true && @simulation.hierarchie_id == 1 %>
 <% @kokyuki = @nintii == true && @simulation.remark_id == 1%>
-
-<% if @nintei == false %>
-<%= "難病指定医から「指定難病」の診断と「重症度分類等」に照らして病状の程度が一定程度以上と認められる必要があります。"%><br>
-<%="確立された対象疾病の診断基準とそれぞれの疾病の特性に応じた重症度分類等が、個々の疾病ごとに設定されています。"%><br>
-<%="難病指定医については、難病情報センターホームページで検索するか、お住まいの都道府県・指定都市の窓口にお問合せください。" %>
-
-
-<% elsif @seiho == true%>
-<%= "0円" %>
-<% elsif @nintei == true && @seiho == false && @simulation.remark_id == 1 %>
-<%= "人工呼吸器その他の生命の維持に必要な装置を装着していることにより特別の配慮を必要とする患者については、負担上限月額は所得階層にかかわらず月額1,000円です。"%>
-
-<% elsif @nintei == true && @simulation.hierarchie_id == 2 %>
-<%= "2,500円" %>
-<% elsif @nintei == true && @simulation.hierarchie_id == 3 %>
-<%= "5,000円" %>
-
-<% elsif @nintei == true && @simulation.hierarchie_id == 4 && @simulation.long_term_id == 2%>
-<%= "10,000円"%>
-<% elsif @nintei == true && @simulation.hierarchie_id == 4 && @simulation.long_term_id == 1%>
-<%= "5,000円" %>
-
-<% elsif @nintei == true && @simulation.hierarchie_id == 5 && @simulation.long_term_id == 2%>
-<%= "20,000円"%>
-<% elsif @nintei == true && @simulation.hierarchie_id == 5 && @simulation.long_term_id == 1%>
-<%= "10,000円" %>
-
-<% elsif @nintei == true && @simulation.hierarchie_id == 6 && @simulation.long_term_id == 2%>
-<%= "30,000円"%>
-<% elsif @nintei == true && @simulation.hierarchie_id == 6 && @simulation.long_term_id == 1%>
-<%= "20,000円" %>
-
+<br><br><br>
+<% if @nintei == true%>
+<h3 style="text-align:center">
+  <%= "医療費助成における自己負担上限額目安(月額)"%></h3>
+<% else %>
+<h3 style="text-align:center">
+  <%= "お知らせ"%></h3>
 <% end %>
+<br><br><br>
 
+<div class="simulation_total ">
+  <h1 style="text-align:center">
+    <% if @nintei == false %>
+    <h4 style="text-align:center"><%= "難病指定医から「指定難病」の診断と「重症度分類等」に照らして病状の程度が一定程度以上と認められる必要があります。"%><br>
+      <%="確立された対象疾病の診断基準とそれぞれの疾病の特性に応じた重症度分類等が、個々の疾病ごとに設定されています。"%><br>
+      <%="難病指定医については、難病情報センターホームページで検索するか、お住まいの都道府県・指定都市の窓口にお問合せください。" %></h4>
+    <% elsif @seiho == true%>
+    <%= "0円" %>
+    <% elsif @nintei == true && @seiho == false && @simulation.remark_id == 1 %>
+    <%= "人工呼吸器その他の生命の維持に必要な装置を装着していることにより特別の配慮を必要とする患者については、負担上限月額は所得階層にかかわらず月額1,000円です。"%>
+
+    <% elsif @nintei == true && @simulation.hierarchie_id == 2 %>
+    <%= "2,500円" %>
+    <% elsif @nintei == true && @simulation.hierarchie_id == 3 %>
+    <%= "5,000円" %>
+
+    <% elsif @nintei == true && @simulation.hierarchie_id == 4 && @simulation.long_term_id == 2%>
+    <%= "10,000円"%>
+    <% elsif @nintei == true && @simulation.hierarchie_id == 4 && @simulation.long_term_id == 1%>
+    <%= "5,000円" %>
+
+    <% elsif @nintei == true && @simulation.hierarchie_id == 5 && @simulation.long_term_id == 2%>
+    <%= "20,000円"%>
+    <% elsif @nintei == true && @simulation.hierarchie_id == 5 && @simulation.long_term_id == 1%>
+    <%= "10,000円" %>
+
+    <% elsif @nintei == true && @simulation.hierarchie_id == 6 && @simulation.long_term_id == 2%>
+    <%= "30,000円"%>
+    <% elsif @nintei == true && @simulation.hierarchie_id == 6 && @simulation.long_term_id == 1%>
+    <%= "20,000円" %>
+    <% end %>
+  </h1>
+</div>
+<br><br>
 <%# ここまで確認済み リファクタリング必須%>
 
 
 
 
 <%#= link_to 'Edit', edit_simulation_path(@simulation) %>
-<%= link_to 'Back', new_simulation_path %>
-<%= link_to 'ホームに戻る', root_path %>
+<p style="text-align:center">
+  <%= link_to 'Back', new_simulation_path %>
+  <%= link_to 'ホームに戻る', root_path %></p>

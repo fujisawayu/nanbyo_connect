@@ -1,17 +1,10 @@
-    <thead>
-      <tr>
-        <th>
-          <h3>登録疾患名</h3>
-        </th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @onsets.each do |onset| %>
-      <tr>
-        <td><%= onset.disease.name %></td>
-      </tr>
-      <% end %>
-    </tbody>
-    </table>
-    <%= link_to "疾患選択", diseases_path %></li>
+  <h3 style="text-align:center">登録疾患名</h3>
+  <div style="text-align:center">
+    <%= link_to " 疾患一覧", diseases_path,id: @disease ,class:"btn btn-primary btn-lg fas fa-file-medical "%>
+  </div>
+  <br>
+  <% @onsets.each do |onset| %>
+  <br>
+  <h5 style="text-align:center">告示番号<%= onset.disease.number %></h5>
+  <h2 style="text-align:center"><%= onset.disease.name %></h2>
+  <% end %>

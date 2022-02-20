@@ -14,15 +14,15 @@ RSpec.describe 'comment機能', type: :system do
     def comment_create
       disease_create
       sleep 0.3
-      fill_in "comment[content]", with: 'Hello!!'
-      click_on '登録する'
+      fill_in "comment[content]", with: 'Hello!!',match: :first
+      click_on '投稿する',match: :first
     end
     context 'コメントを投稿する' do
       it '非同期でコメントが表示される' do
         disease_create
         sleep 0.3
-        fill_in "comment[content]", with: 'Hello!!'
-        click_on '登録する'
+        fill_in "comment[content]", with: 'Hello!!',match: :first
+        click_on '投稿する',match: :first
         expect(page).to have_content 'Hello!!'
       end
     end
