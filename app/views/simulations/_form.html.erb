@@ -1,11 +1,11 @@
 <%= form_with(model: simulation, local: true) do |form| %>
 <% if simulation.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(simulation.errors.count, "error") %> prohibited this simulation from being saved:</h2>
+  <h2 style="text-align:center"><%= pluralize(simulation.errors.count, "件") %>の未入力があります</h2>
 
   <ul>
     <% simulation.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <li style="text-align:center"><%= message %></li>
     <% end %>
   </ul>
 </div>
