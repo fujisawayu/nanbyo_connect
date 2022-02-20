@@ -3,14 +3,20 @@ ja:
     models:
       disease: 疾患
       user: ユーザー
+      comment: コメント
+      event: イベント
+      simulation: シミュレーション
+      expense: 治療費情報
+      treatment: 治療情報
+      onset: 発病
     attributes:
       disease:
-        number: 番号
+        number: 告示番号
         name: 疾患名
       user:
         title: タイトル
         name: アカウント名
-        email:
+        email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
@@ -23,3 +29,14 @@ ja:
         treatment: 治療費
         drug_cost: 薬剤費
         other_cost: その他のコスト
+      treatment:
+        affected_on: 罹患日
+        drug_name: 薬剤名
+        content: 内容
+        advice: アドバイス
+      simulation:
+        diagnose: 診断項目
+        severitie: 重症度項目
+        hierarchie: 階層区分
+        long_term: 長期区分
+        remark: 人口呼吸器項目

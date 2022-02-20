@@ -1,3 +1,5 @@
+<h2 style="text-align:center">治療情報登録</h2>
+<br>
 <%= form_with(model: [@disease, @treatment], local: true) do |form| %>
 <div class="user_field">
   <%= form.label :罹患日 %>
@@ -27,5 +29,6 @@
 <% end %>
 
 <%#= render 'form', expense: @expense %>
-
-<%= link_to 'Back', disease_treatments_path %>
+<div style="text-align:center">
+  <%= link_to '戻る', disease_treatments_path %>
+</div>
