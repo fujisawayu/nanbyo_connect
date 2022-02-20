@@ -10,8 +10,16 @@ ja:
       user:
         title: タイトル
         name: アカウント名
-        email: メールアドレス
+        email:
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+        birthday: 誕生日
+        prefecture: エリア
+        self_introduction: 自己紹介
+        classification: 関係区分
+      expense:
+        treatment: 治療費
+        drug_cost: 薬剤費
+        other_cost: その他のコスト
