@@ -16,7 +16,6 @@ RSpec.describe 'treatment機能', type: :system do
         disease_create
         click_on '情報一覧'
         click_on '情報登録'
-        fill_in "treatment[affected_on]", with: DateTime.now
         fill_in "treatment[drug_name]", with: 'テスト薬剤'
         fill_in "treatment[content]", with: '治療中です'
         fill_in "treatment[advice]", with: '検査が大切です'
@@ -29,7 +28,6 @@ RSpec.describe 'treatment機能', type: :system do
         disease_create
         click_on '情報一覧'
         click_on '情報登録'
-        fill_in "treatment[affected_on]", with: DateTime.now
         fill_in "treatment[drug_name]", with: 'テスト薬剤'
         fill_in "treatment[content]", with: '治療中です'
         fill_in "treatment[advice]", with: '検査が大切です'
@@ -45,7 +43,6 @@ RSpec.describe 'treatment機能', type: :system do
        disease_create
        click_on '情報一覧'
        click_on '情報登録'
-       fill_in "treatment[affected_on]", with: DateTime.now
        fill_in "treatment[drug_name]", with: 'テスト薬剤'
        fill_in "treatment[content]", with: '治療中です'
        fill_in "treatment[advice]", with: '検査が大切です'

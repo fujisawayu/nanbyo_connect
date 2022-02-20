@@ -22,7 +22,7 @@ RSpec.describe 'User機能', type: :system do
         select '東京都', from: 'エリア'
         fill_in "user[email]", with: 'test@test.com'
         fill_in "user[password]", with: @user.password
-        fill_in "user[password_confirmation]", with: @user.password
+        #fill_in "user[password_confirmation]", with: @user.password
         click_on 'アカウント登録'
         expect(page).to have_content 'アカウント登録が完了しました。'
       end
