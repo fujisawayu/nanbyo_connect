@@ -21,8 +21,8 @@
         <%else %>
       <td> <img src=<%= comment.user.image %> width="90" height="90">
         <% end %>
-        <%= comment.user.name %>
-        <%= comment.user.age %>
+        <%= comment.user.name %>/
+        <%= comment.user.age %>/
         <%= comment.user.prefecture %></td>
       <td><%= comment.content %>
         <% if comment.user_id == current_user.id%>
