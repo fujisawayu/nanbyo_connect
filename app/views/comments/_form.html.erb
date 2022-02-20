@@ -9,26 +9,13 @@
   </ul>
 </div>
 <% end %>
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>年齢</th>
-      <th>エリア</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <div class="field">
-      <tr>
-        <td><%= current_user.name %></td>
-        <td><%= current_user.age %></td>
-        <td><%= current_user.prefecture %></td>
-        <td><%= form.label :コメント %></td>
-        <td><%= form.text_area :content, size: "50x3" %></td>
-        <td class="actions"> <%= form.submit %></td>
-    </div>
-    </tr>
-  </tbody>
-</table>
+
+<img src=<%= current_user.image %> width="90" height="90">
+<%= current_user.name %>
+<%= current_user.age %>
+<%= current_user.prefecture %></td>
+<%= form.label :コメント %>
+<%= form.text_area :content, size: "50x3" %>
+<a class="actions"> <%= form.submit %></a>
+
 <% end %>
