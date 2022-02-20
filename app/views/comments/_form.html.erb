@@ -9,13 +9,19 @@
   </ul>
 </div>
 <% end %>
-
-<img src=<%= current_user.image %> width="90" height="90">
-<%= current_user.name %>
-<%= current_user.age %>
-<%= current_user.prefecture %></td>
-<%= form.label :コメント %>
-<%= form.text_area :content, size: "50x3" %>
-<a class="actions"> <%= form.submit %></a>
+<div class="user_field">
+  <% if current_user.image.blank? %>
+  <td> <img src="/assets/icon.png" width="90" height="90">
+    <%else %>
+  <td> <img src=<%= current_user.image %> width="90" height="90">
+    <% end %>
+    <%= current_user.name %>
+    <%= current_user.age %>
+    <%= current_user.prefecture %></td>
+</div>
+<div class="user_field">
+  <%= form.label :コメントはこちらから %>
+  <%= form.text_area :content, size: "50x3" %></div>
+<div class="actions"> <%= form.submit :投稿する %></div>
 
 <% end %>

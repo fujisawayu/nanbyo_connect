@@ -12,19 +12,21 @@
 
   <%= link_to " 治療費一覧", "/diseases/#{@disease.id}/expenses",id: @disease ,class:"btn btn-primary btn-lg fas fa-comments-dollar"%>
 </div>
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender上 -->
+<%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
-<%= link_to 'Back', diseases_path %>
+<div style="text-align:center">
+  <%= link_to '戻る', diseases_path %></div>
 
 <div id="comments_area">
   <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'comments/index', locals: { comments: @comments, disease: @disease } %>
 </div>
 
-<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender下 -->
 <%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
 
 <%#= link_to 'Edit', edit_disease_path(@disease) %>
-<%= link_to 'Back', diseases_path %>
-
-<%# "/疾患/#{@疾患.id}/治療費" %>
+<div style="text-align:center">
+  <%= link_to '戻る', diseases_path %></div>
