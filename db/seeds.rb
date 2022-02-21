@@ -356,7 +356,7 @@ Disease.create!([
   {name: '進行性家族性肝内胆汁うっ滞症', number: '338'}
 ])
 
-5.times do 
+10.times do 
   Expense.create!(
     treatment_cost: 100000,
     drug_cost: 80000,
@@ -366,7 +366,7 @@ Disease.create!([
   )
   end
   
-5.times do 
+10.times do 
   Expense.create!(
     treatment_cost: 70000,
     drug_cost: 50000,
@@ -376,7 +376,7 @@ Disease.create!([
   )
   end
 
-10.times do 
+20.times do 
 Treatment.create!(
   affected_on: Faker::Date.between(from: 50.days.ago, to: Date.today),
   drug_name: Faker::Science.modifier,
@@ -387,7 +387,7 @@ Treatment.create!(
 )
 end
 
-10.times do
+20.times do
 Comment.create!(
   disease_id: rand(1..5),
   content: Faker::Quote.singular_siegler,
@@ -395,7 +395,7 @@ Comment.create!(
 )
 end
 
-10.times do
+20.times do
 Onset.create!(
   disease_id: rand(1..5),
   user_id: rand(1..11),
