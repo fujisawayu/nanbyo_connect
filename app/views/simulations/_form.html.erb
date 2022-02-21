@@ -21,13 +21,21 @@
   <%= form.collection_select(:severitie_id, Severitie.all, :id, :name,{include_blank: "---"} ) %>
 </div>
 <br>
+<%# 下記修正予定 %>
 <p class='simulation_text'>階層区分を選択してください</p>
-<p class='simulation_text'>生活保護</p>
-<p class='simulation_text'>低所得Ⅰ：本人年収〜80万円</p>
-<p class='simulation_text'>低所得Ⅱ：本人年収80万円超〜</p>
-<p class='simulation_text'>一般所得Ⅰ：市町村住民税課税以上7.1万円未満</p>
-<p class='simulation_text'>一般所得Ⅱ：市町村住民税7.1万円以上25.1万円未満</p>
-<p class='simulation_text'>上位所得：市町村住民税25.1万円以上</p>
+<p class='simulation_text'>( )内の数字は、夫婦2人世帯の場合における年収の目安です。</p>
+<br>
+<p class='simulation_text'>生活保護</p><br>
+<p class='simulation_text'>低所得Ⅰ</p>
+<p class='simulation_text'>・市町村住民税非課税世帯または本人年収〜80万円</p><br>
+<p class='simulation_text'>低所得Ⅱ</p>
+<p class='simulation_text'>・市町村住民税非課税世帯または本人年収80万円〜</p><br>
+<p class='simulation_text'>一般所得Ⅰ</p>
+<p class='simulation_text'>・市町村住民税課税以上7.1万円未満(約160万円〜約370万円)</p><br>
+<p class='simulation_text'>一般所得</p>
+<p class='simulation_text'>・市町村住民税7.1万円以上25.1万円未満(約370万円〜約810万円)</p><br>
+<p class='simulation_text'>上位所得</p>
+<p class='simulation_text'>・市町村住民税25.1万円以上(約810万円〜)</p>
 <br>
 
 <div class='user_field'>

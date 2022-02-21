@@ -8,3 +8,7 @@
   <h5 style="text-align:center">告示番号<%= onset.disease.number %></h5>
   <h2 style="text-align:center"><%= onset.disease.name %></h2>
   <% end %>
+  <br>
+  <p style="text-align:center">
+    <%= link_to '戻る', user_path(current_user.id) %>
+  </p>

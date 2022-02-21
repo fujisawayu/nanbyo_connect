@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js { render :index}
       else
-        format.html { redirect_to disease_path(@disease) }
+        format.html { redirect_to disease_path(@disease) , alert: 'コメントが未入力です'}
       end
     end
   end
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
           flash.now[:notice] = 'コメントが編集されました'
           format.js { render :index }
         else
-          flash.now[:notice] = 'コメントの編集に失敗しました'
+          flash.now[:alert] = 'コメントの編集に失敗しました'
           format.js { render :edit_error }
         end
       end

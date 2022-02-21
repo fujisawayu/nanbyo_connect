@@ -12,7 +12,6 @@
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th></th>
       <th nowrap scope="col">User</th>
       <th nowrap scope="col">服用薬剤</th>
       <th nowrap scope="col">治療内容</th>
@@ -26,11 +25,11 @@
       <% if treatment.user.image.blank? %>
       <td> <img src="/assets/icon.png" width="90" height="90">
         <%else %>
-      <td> <img src=<%= treatment.user.image %> width="90" height="90">
+      <td nowrap> <img src=<%= treatment.user.image %> width="90" height="90">
         <% end %>
-      <td nowrap><%= treatment.user.name %>/
-        <%= treatment.user.age %>/
-        <%= treatment.user.prefecture %>/
+        <div><%= treatment.user.name %></div>
+        <%= treatment.user.age %> /
+        <%= treatment.user.prefecture %>
         <br>
         罹患日:<%= treatment.affected_on.strftime("%Y年%m月")%>
         <br>
