@@ -1,7 +1,7 @@
 <%= form_with(model: [disease, comment]) do |form| %>
 <% if comment.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  <h2><%= pluralize(comment.errors.count, "件") %>件のエラーがあります</h2>
   <ul>
     <% comment.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -9,9 +9,10 @@
   </ul>
 </div>
 <% end %>
-<div class="field">
+<%# 非同期処理 Modal用意%>
+<div class="user_field">
+  <%= form.label :編集はこちらから %>
   <%= form.text_area :content, id: "comment_content_#{disease.id}" %>
-  <%= form.label :content %>
 </div>
 <div class="actions">
   <%= form.submit %>
