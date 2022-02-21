@@ -12,7 +12,6 @@
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th></th>
       <th nowrap scope="col">User</th>
       <th nowrap scope="col">治療費</th>
       <th nowrap scope="col">薬剤費</th>
@@ -26,11 +25,11 @@
       <% if expense.user.image.blank? %>
       <td> <img src="/assets/icon.png" width="90" height="90">
         <%else %>
-      <td> <img src=<%= expense.user.image %> width="90" height="90">
+      <td nowrap> <img src=<%= expense.user.image %> width="90" height="90">
         <% end %>
-      <td nowrap><%= expense.user.name %>/
-        <%= expense.user.age %>/
-        <%= expense.user.prefecture %>/
+        <div><%= expense.user.name %></div>
+        <%= expense.user.age %> /
+        <%= expense.user.prefecture %>
         <br>
         <% if expense.user_id == current_user.id %>
         <%= link_to 'Edit', edit_disease_expense_path(expense, id: expense.id) %>
