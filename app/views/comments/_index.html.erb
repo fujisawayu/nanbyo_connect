@@ -1,4 +1,3 @@
-<%= notice %>
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
@@ -7,9 +6,7 @@
     </tr>
   </thead>
 
-
-
-
+  <% notice %>
 
   <tbody>
     <% comments.each do |comment| %>
@@ -19,10 +16,10 @@
       <% if comment.user.image.blank? %>
       <td> <img src="/assets/icon.png" width="90" height="90">
         <%else %>
-      <td> <img src=<%= comment.user.image %> width="90" height="90">
+      <td nowrap> <img src=<%= comment.user.image %> width="90" height="90">
         <% end %>
-        <%= comment.user.name %>/
-        <%= comment.user.age %>/
+        <div><%= comment.user.name %></div>
+        <%= comment.user.age %> /
         <%= comment.user.prefecture %></td>
       <td><%= comment.content %>
         <% if comment.user_id == current_user.id%>
