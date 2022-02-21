@@ -26,7 +26,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @diseases %>
 <br>
 <% if current_user.admin? %>
 <%= link_to '疾患登録', new_disease_path %>
