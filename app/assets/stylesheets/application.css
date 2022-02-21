@@ -156,11 +156,11 @@ h1 {
 }
 
 .login_image{
-  background-color: #486d46;            /* 背景色 */
+  background-color: #486d46;  /* 背景色 */
   background-image: url("/assets/login1.jpeg"); /* 画像 */
-  background-size: cover;               /* 全画面 */
-  background-attachment: fixed;         /* 固定 */
-  background-position: center center;   /* 縦横中央 */
+  background-size: cover; /* 全画面 */
+  background-attachment: fixed;  /* 固定 */
+  background-position: center center; /* 縦横中央 */
 }
 
 .registration_image{
@@ -169,4 +169,9 @@ h1 {
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
+}
+
+/* kaminari */
+.pagination {
+  justify-content: center;
 }

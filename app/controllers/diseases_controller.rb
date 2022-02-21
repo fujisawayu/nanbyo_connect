@@ -5,7 +5,7 @@ class DiseasesController < ApplicationController
   before_action :prohibit_access, only: %i[ new create edit update destroy ]
 
   def index
-    @diseases = Disease.all
+    @diseases = Disease.page(params[:page]).per(10)
   end
 
   def show
