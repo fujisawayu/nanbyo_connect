@@ -1,3 +1,7 @@
+<% if notice %>
+<p class="alert alert-primary"><%= notice %><button type="button" class="close" data-dismiss="alert">&times;</button>
+</p>
+<% end %>
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
@@ -6,10 +10,8 @@
     </tr>
   </thead>
 
-  <% notice %>
-
   <tbody>
-    <% comments.each do |comment| %>
+    <% comments.reverse.each do |comment| %>
     <% if comment.id.present? %>
     <tr>
       <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
