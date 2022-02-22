@@ -25,21 +25,24 @@
       <% if expense.user.image.blank? %>
       <td> <img src="/assets/icon.png" width="90" height="90">
         <%else %>
-      <td nowrap> <img src=<%= expense.user.image %> width="90" height="90">
+      <td nowrap width=15%> <img src=<%= expense.user.image %> width="90" height="90">
         <% end %>
         <div><%= expense.user.name %></div>
         <%= expense.user.age %> /
         <%= expense.user.prefecture %>
         <br>
+        投稿日時:<%= expense.created_at.strftime("%Y年%m月%d日 %H:%M")%>
+        <br>
         <% if expense.user_id == current_user.id %>
-        <%= link_to 'Edit', edit_disease_expense_path(expense, id: expense.id) %>
-        <%= link_to 'Destroy', disease_expense_path(expense, id: expense.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to '編集', edit_disease_expense_path(expense, id: expense.id) %>
+        <%= link_to '削除', disease_expense_path(expense, id: expense.id), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+        <% end %>
       </td>
-      <td><%= number_to_currency(expense.treatment_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
-      <td><%= number_to_currency(expense.drug_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
-      <td><%= number_to_currency(expense.other_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
+      <td width=25%><%= number_to_currency(expense.treatment_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
+      <td width=25%><%= number_to_currency(expense.drug_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
+      <td width=25%><%= number_to_currency(expense.other_cost,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
     </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>
+<%= paginate @expenses %>
