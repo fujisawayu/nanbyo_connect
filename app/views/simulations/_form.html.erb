@@ -1,7 +1,7 @@
 <%= form_with(model: simulation, local: true) do |form| %>
 <% if simulation.errors.any? %>
 <div id="error_explanation">
-  <h2 style="text-align:center"><%= pluralize(simulation.errors.count, "件") %>の未入力があります</h2>
+  <h2 style="text-align:center"><%= pluralize(simulation.errors.count, "件") %>のエラーがあります</h2>
 
   <ul>
     <% simulation.errors.full_messages.each do |message| %>

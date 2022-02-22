@@ -20,10 +20,10 @@
       <td><%= event.place %></td>
       <td><%= event.title %></td>
       <td><%= event.content %></td>
-      <td><%= link_to 'Show', event %></td>
+      <td><%= link_to '詳細', event %></td>
       <% if current_user.admin? %>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to '編集', edit_event_path(event) %></td>
+      <td><%= link_to '削除', event, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       <% end %>
     </tr>
     <% end %>

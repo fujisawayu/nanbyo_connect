@@ -4,7 +4,7 @@ module RailsAdmin
 
   class MainController < RailsAdmin::ApplicationController
     rescue_from CanCan::AccessDenied do |exception|
-      flash[:alert] = 'You are not allowed to access this page.'
+      flash[:alert] = 'アクセス権限がありません'
       redirect_to main_app.root_path
     end
   end

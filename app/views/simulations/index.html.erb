@@ -20,10 +20,10 @@
       <td><%= simulation.hierarchie_id %></td>
       <td><%= simulation.long_term_id %></td>
       <td><%= simulation.remark_id %></td>
-      <td><%= link_to 'Show', simulation %></td>
+      <td><%= link_to '詳細', simulation %></td>
       <% if current_user.admin? %>
-      <td><%= link_to 'Edit', edit_simulation_path(simulation) %></td>
-      <td><%= link_to 'Destroy', simulation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to '編集', edit_simulation_path(simulation) %></td>
+      <td><%= link_to '削除', simulation, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       <% end %>
     </tr>
     <% end %>

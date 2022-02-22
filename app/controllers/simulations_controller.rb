@@ -35,7 +35,7 @@ class SimulationsController < ApplicationController
   def update
     respond_to do |format|
       if @simulation.update(simulation_params)
-        format.html { redirect_to simulation_url(@simulation), notice: "Simulation was successfully updated." }
+        format.html { redirect_to simulation_url(@simulation), notice: "シミュレーション内容が更新されました" }
         format.json { render :show, status: :ok, location: @simulation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class SimulationsController < ApplicationController
     @simulation.destroy
 
     respond_to do |format|
-      format.html { redirect_to simulations_url, notice: "Simulation was successfully destroyed." }
+      format.html { redirect_to simulations_url, notice: "シミュレーション内容が削除されました" }
       format.json { head :no_content }
     end
   end
