@@ -28,6 +28,7 @@ footer {
   margin-top: auto;
 }
 
+/* トップ画像の透明設定 */
 /* .carousel-item {
   opacity: 0.7;
 }  */
@@ -38,6 +39,7 @@ footer {
   padding: 0px;
   text-decoration: none;
 }
+
 .box {
   width: 350px;
   height: 450px;
@@ -174,4 +176,26 @@ h1 {
 /* kaminari */
 .pagination {
   justify-content: center;
+}
+
+/* treatmentとexpenseの文字数に対応させる */
+td {
+  word-break: break-all;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
 }

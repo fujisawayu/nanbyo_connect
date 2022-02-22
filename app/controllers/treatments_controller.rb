@@ -4,7 +4,7 @@ class TreatmentsController < ApplicationController
   before_action :prohibit_access, only: %i[show edit update destroy ]
 
   def index
-    @treatments = Treatment.where(disease_id: params[:disease_id] )
+    @treatments = Treatment.where(disease_id: params[:disease_id] ).order("created_at DESC").page(params[:page]).per(10)
     @disease = Disease.find(params[:disease_id])
   end
 

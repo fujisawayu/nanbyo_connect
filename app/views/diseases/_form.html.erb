@@ -1,27 +1,30 @@
 <%= form_with(model: disease, local: true) do |form| %>
-<% if disease.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(disease.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div style="text-align:center">
+  <% if disease.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(disease.errors.count, "件") %> のエラーがあります</h2>
 
-  <ul>
-    <% disease.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% disease.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 <% end %>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :number %>
   <%= form.text_field :number %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :name %>
   <%= form.text_field :name %>
 </div>
-
+<br>
 <div class="actions">
   <%= form.submit %>
 </div>
+<br>
 <% end %>

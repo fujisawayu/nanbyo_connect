@@ -2,7 +2,7 @@
 
 <%= form_with(model: [@treatment.disease, @treatment], local: true) do |form| %>
 <% if @treatment.errors.any? %> <div id="error_explanation">
-  <h2><%= pluralize(@treatment.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <h2><%= pluralize(@treatment.errors.count, "件") %> のエラーがあります</h2>
 
   <ul>
     <% @treatment.errors.full_messages.each do |message| %>

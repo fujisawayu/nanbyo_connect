@@ -28,10 +28,11 @@
 </table>
 <%= paginate @diseases %>
 <br>
-<% if current_user.admin? %>
-<%= link_to '疾患登録', new_disease_path %>
-<% end %>
-<%= link_to 'ホームに戻る', root_path %>
+<div style="text-align:center">
+  <%= link_to 'ホームに戻る', root_path %> /
+  <% if current_user.admin? %>
+  <%= link_to '疾患登録', new_disease_path %>
+  <% end %></div>
 
 
 
