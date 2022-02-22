@@ -32,7 +32,7 @@ RSpec.describe 'treatment機能', type: :system do
         fill_in "treatment[content]", with: '治療中です'
         fill_in "treatment[advice]", with: '検査が大切です'
         click_on '登録する'
-        click_on 'Edit'
+        click_on '編集'
         fill_in "treatment[drug_name]", with: 'テスト薬剤2'
         click_on '更新する'
         expect(page).to have_content 'テスト薬剤2'
@@ -47,7 +47,7 @@ RSpec.describe 'treatment機能', type: :system do
        fill_in "treatment[content]", with: '治療中です'
        fill_in "treatment[advice]", with: '検査が大切です'
        click_on '登録する'
-       click_on 'Destroy'
+       click_on '削除'
        expect {
         page.accept_confirm 'Are you sure？'
         expect(page).to have_content 'Treatment was successfully destroyed.'

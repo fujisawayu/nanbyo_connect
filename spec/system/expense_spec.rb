@@ -32,7 +32,7 @@ RSpec.describe 'expense機能', type: :system do
         fill_in "expense[drug_cost]", with: 1000
         fill_in "expense[other_cost]", with: 1000
         click_on '登録する'
-        click_on 'Edit'
+        click_on '編集'
         fill_in "expense[treatment_cost]", with: 2000
         click_on '更新する'
         expect(page).to have_content '2,000円'
@@ -47,7 +47,7 @@ RSpec.describe 'expense機能', type: :system do
         fill_in "expense[drug_cost]", with: 1000
         fill_in "expense[other_cost]", with: 1000
         click_on '登録する'
-       click_on 'Destroy'
+       click_on '削除'
        expect {
         page.accept_confirm 'Are you sure？'
         expect(page).to have_content '治療費情報を削除しました'
