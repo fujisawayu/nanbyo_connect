@@ -1,60 +1,62 @@
 <% if user_signed_in? && @user == current_user %>
-<h3 style="text-align:center"><%= @user.name %>さんのマイページ</h3>
+<h2 style="text-align:center"><%= @user.name %>さんのマイページ</h2>
 <% else %>
 <h1>ユーザーページ</h1>
 <% end %>
 <br>
+<div class="flame09">
+  <% if @user.image.blank? %>
+  <p style="text-align:center">
+    <img src="/assets/icon.png" width="90" height="90">
+  </p>
+  <% else%>
+  <p style="text-align:center">
+    <%= image_tag @user.image.url, size: '150x150' %>
+  </p>
+  <% end %>
+  <br>
+  <div style="text-align:center">
+    <%= link_to ' 登録した疾患', onsets_path,id: @disease ,class:"btn btn-info btn-lg far fa-calendar-plus "%>
+  </div>
+  <br>
 
-<% if @user.image.blank? %>
-<p style="text-align:center">
-  <img src="/assets/icon.png" width="90" height="90">
-</p>
-<% else%>
-<p style="text-align:center">
-  <%= image_tag @user.image.url, size: '150x150' %>
-</p>
-<% end %>
-<br>
-<div style="text-align:center">
-  <%= link_to ' 登録した疾患', onsets_path,id: @disease ,class:"btn btn-info btn-lg far fa-calendar-plus "%>
+  <p style="text-align:center">
+    <strong class="user_strong">名前:</strong>
+    <span class="user_a"><%= @user.name %></span>
+  </p>
+
+  <p style="text-align:center">
+    <strong class="user_strong">メールアドレス:</strong>
+    <span class="user_a"><%= @user.email %></span>
+  </p>
+
+  <p style="text-align:center">
+    <strong class="user_strong">年齢:</strong>
+    <span class="user_a"><%= @user.age %></span>
+  </p>
+
+  <p style="text-align:center">
+    <strong class="user_strong">エリア:</strong>
+    <span class="user_a"><%= @user.prefecture %></span>
+  </p>
+
+  <p style="text-align:center">
+    <strong class="user_strong">生年月日:</strong>
+    <span class="user_a"><%= @user.birthday %></span>
+  </p>
+
+  <p style="text-align:center">
+    <strong class="user_strong">自己紹介:</strong>
+    <span class="user_a"><%= @user.self_introduction %></span>
+  </p>
+
+
+  <p style="text-align:center">
+    <strong class="user_strong">関係区分:</strong>
+    <span class="user_a"><%= @user.classification %></span>
+  </p>
 </div>
-<br>
 
-<p style="text-align:center">
-  <strong>名前:</strong>
-  <%= @user.name %>
-</p>
-
-<p style="text-align:center">
-  <strong>メールアドレス:</strong>
-  <%= @user.email %>
-</p>
-
-<p style="text-align:center">
-  <strong>年齢:</strong>
-  <%= @user.age %>
-</p>
-
-<p style="text-align:center">
-  <strong>エリア:</strong>
-  <%= @user.prefecture %>
-</p>
-
-<p style="text-align:center">
-  <strong>生年月日:</strong>
-  <%= @user.birthday %>
-</p>
-
-<p style="text-align:center">
-  <strong>自己紹介:</strong>
-  <%= @user.self_introduction %>
-</p>
-
-
-<p style="text-align:center">
-  <strong>関係区分:</strong>
-  <%= @user.classification %>
-</p>
 <%# userとdisease.idをリレーションする%>
 
 <%#= link_to 'Edit', edit_user_path(@user) %>
