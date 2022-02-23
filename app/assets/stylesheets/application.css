@@ -199,3 +199,22 @@ td {
 .pagination>li>a:hover {        
   border-radius: 15px;    /*角を丸くする*/
 }
+
+/* h2タイトルの下線 */
+h2 {
+  position: relative;
+  padding: 1rem .5rem;
+}
+
+h2:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2af598), to(#009efd));
+  background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+}
