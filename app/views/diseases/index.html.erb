@@ -12,16 +12,16 @@
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">告示番号</th>
-      <th scope="col">病名</th>
+      <th scope="col" , nowrap width=15%> 告示番号</th>
+      <th scope="col" , nowrap width=30%>病名</th>
     </tr>
   </thead>
 
   <tbody>
     <% @diseases.each do |disease| %>
     <tr>
-      <td align="center"><%= link_to disease.number, disease %></td>
-      <td><%= link_to disease.name, disease %></td>
+      <td nowrap width=15%><%= link_to disease.number, disease %></td>
+      <td nowrap width=30%><%= link_to disease.name, disease %></td>
     </tr>
     <% end %>
   </tbody>
