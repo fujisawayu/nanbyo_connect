@@ -44,20 +44,22 @@
   <!-- ナビゲーションメニュー -->
   <% if user_signed_in? %>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <%= link_to "ホーム", root_path, class: "navbar-brand text-dark" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ">
-        <%= link_to "マイページ", user_path(current_user.id), class: "nav-link text-dark" %>
-        <%= link_to "疾患選択", diseases_path, class: "nav-link text-dark" %>
-        <%= link_to "医療費助成シミュレーション", new_simulation_path, class: "nav-link text-dark" %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "nav-link text-dark" %>
-        <% end %>
+    <div class="container-fluid">
+      <%= link_to "ホーム", root_path, class: "navbar-brand text-dark" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ">
+          <%= link_to "マイページ", user_path(current_user.id), class: "nav-link text-dark" %>
+          <%= link_to "疾患選択", diseases_path, class: "nav-link text-dark" %>
+          <%= link_to "医療費助成シミュレーション", new_simulation_path, class: "nav-link text-dark" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "nav-link text-dark" %>
+          <% end %>
+        </div>
       </div>
+    </div>
   </nav>
   <div style="text-align:center">
     <% unless user_signed_in? %>
