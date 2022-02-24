@@ -2,6 +2,9 @@
 <h2 style="text-align:center"><%= @disease.name %></h2>
 <br>
 
+<div style="text-align:center">現在この疾患の治療費情報は<%= @expenses.where(params[:created_at]).total_count %>件です。</div>
+
+<br>
 <div style="text-align:center">
   <%= link_to " 情報一覧","/diseases/#{@disease.id}/treatments",id: @disease ,class:"btn btn-primary btn-lg far fa-edit "%>
   <%= link_to " 治療費登録",new_disease_expense_path,id: @disease ,class:"btn btn-success btn-lg fas fa-comments-dollar"%>

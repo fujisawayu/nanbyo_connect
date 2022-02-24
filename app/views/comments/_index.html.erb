@@ -24,7 +24,7 @@
         <%= comment.user.age %> /
         <%= comment.user.prefecture %>
         <br>
-        投稿日時:<%= comment.user.created_at.strftime("%Y年%m月%d日 %H:%M")%></td>
+        投稿日時:<%= comment.created_at.strftime("%Y年%m月%d日 %H:%M")%></td>
       <td><%= comment.content %>
         <% if comment.user_id == current_user.id%>
         <br>
