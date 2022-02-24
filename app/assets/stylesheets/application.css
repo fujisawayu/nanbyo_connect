@@ -48,6 +48,7 @@ footer {
   border: 1px #ddd solid;
 }
 
+/* ログイン画面ここから */
 .box-inner {
   padding: 20px 26px;
 }
@@ -218,3 +219,57 @@ h2:after {
   background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
   background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
 }
+
+.box14{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;
+}
+.box14 p {
+    margin: 0; 
+    padding: 0;
+}
+
+/* ログイン画面メモ */
+.memox{
+  position:relative;
+  background:#fffde7;
+  width:75%;
+  margin:2em auto;
+  padding:1.5em 1em;
+  transform: rotate(-2deg);
+  box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+  color:#795548;
+  }
+  .memox::before{
+  content:"What's Nanbyo Connect ..";
+  position:relative;
+  display:inline-block;
+  border-bottom:3px solid #795548;
+  border-radius: 0 0 40% 5% / 0 0 15% 20%;
+  padding:0 1em 0.1em 0.2em;
+  font-size:110%;
+  font-weight:bold;
+  transform: rotate(-5deg);
+  }
+  .memox::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:-15px;
+  margin-left:-75px;
+  width:150px;
+  height:30px;
+  background:rgba(245,245,245,0.7);
+  box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+  transform: rotate(-4deg);
+  }
+  .memox ol{
+  margin:1em 0.5em 0 2em;
+  padding:0 0 0 0;
+  }
+  .memox ol li{
+  margin-bottom:0.5em;
+  }
