@@ -1,7 +1,13 @@
 <div style="text-align:center"><%= render "devise/shared/error_messages", resource: resource %></div>
 
 <body class="registration_image">
-  <br>
+  <div class="memox huifont">
+    <ol>
+      <li>難病に関する治療内容や治療費が共有されています。</li>
+      <li>難病と診断された際の助成金の目安を知ることができます。</li>
+      <li>自分自身が、大切な人が、難病と診断された際に知りたい情報が集まっています。</li>
+    </ol>
+  </div>
   <div class="box">
     <div class="box-inner">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
