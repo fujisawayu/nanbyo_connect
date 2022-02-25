@@ -1,37 +1,39 @@
-<% if notice %>
-<p class="alert alert-primary"><%= notice %><button type="button" class="close" data-dismiss="alert">&times;</button>
-</p>
-<% end %>
-<table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">User</th>
-      <th scope="col">コメント</th>
-    </tr>
-  </thead>
+    <% if alert %>
+    <p class="alert alert-danger"><%= alert %><button type="button" class="close" data-dismiss="alert">&times;</button>
+    </p>
+    <% end %>
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">User</th>
+          <th scope="col">コメント</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% comments.reverse.each do |comment| %>
-    <% if comment.id.present? %>
-    <tr>
-      <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
-      <% if comment.user.image.blank? %>
-      <td> <img src="/assets/icon.png" width="90" height="90">
-        <%else %>
-      <td nowrap> <img src=<%= comment.user.image %> width="90" height="90">
-        <% end %>
-        <div><%= comment.user.name %></div>
-        <%= comment.user.age %> /
-        <%= comment.user.prefecture %></td>
-      <td><%= comment.content %>
-        <% if comment.user_id == current_user.id%>
-        <br>
-        <%= link_to "編集", edit_disease_comment_path(disease, comment), remote: true %>
-        <%= link_to "削除",disease_comment_path(comment.disease_id, comment.id), method: :delete, remote: true,
+      <tbody>
+        <% comments.reverse.each do |comment| %>
+        <% if comment.id.present? %>
+        <tr>
+          <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
+          <% if comment.user.image.blank? %>
+          <td> <img src="/assets/icon.png" width="90" height="90">
+            <%else %>
+          <td nowrap> <img src=<%= comment.user.image %> width="90" height="90">
+            <% end %>
+            <div><%= comment.user.name %></div>
+            <%= comment.user.age %> /
+            <%= comment.user.prefecture %>
+            <br>
+            投稿:<%= comment.created_at.strftime("%Y/%m/%d/ %I:%M%#p")%></td>
+          <td><%= comment.content %>
+            <% if comment.user_id == current_user.id%>
+            <br>
+            <%= link_to "編集", edit_disease_comment_path(disease, comment), remote: true %>
+            <%= link_to "削除",disease_comment_path(comment.disease_id, comment.id), method: :delete, remote: true,
                                         data: { confirm: "本当に削除しますか?"} %></td>
-    </tr>
-  </tbody>
-  <% end %>
-  <% end %>
-  <% end %>
-</table>
+        </tr>
+      </tbody>
+      <% end %>
+      <% end %>
+      <% end %>
+    </table>

@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = @disease.comments.find(params[:id])
     respond_to do |format|
-      flash.now[:notice] = 'コメントの編集中'
+      flash.now[:alert] = 'コメントの編集中'
       format.js { render :edit}
     end
   end
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment = @disease.comments.find(params[:id])
       respond_to do |format|
         if @comment.update(comment_params)
-          flash.now[:notice] = 'コメントが編集されました'
+          flash.now[:alert] = 'コメントが編集されました'
           format.js { render :index }
         else
           flash.now[:alert] = 'コメントの編集に失敗しました'
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      flash.now[:notice] = 'コメントが削除されました'
+      flash.now[:alert] = 'コメントが削除されました'
       format.js { render :index }
     end
   end

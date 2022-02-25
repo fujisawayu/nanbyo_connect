@@ -12,7 +12,7 @@
 <%# 非同期処理 Modal用意%>
 <div class="user_field">
   <%= form.label :編集はこちらから %>
-  <%= form.text_area :content, id: "comment_content_#{disease.id}" %>
+  <%= form.text_area :content, id: "comment_content_#{disease.id}", placeholder: "コメントを入力してください"%>
 </div>
 <div class="actions">
   <%= form.submit %>

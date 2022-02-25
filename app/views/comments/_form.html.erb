@@ -19,9 +19,9 @@
     <%= current_user.age %>/
     <%= current_user.prefecture %></td>
 </div>
+<br>
 <div class="user_field">
-  <%= form.label :コメントはこちらから %>
-  <%= form.text_area :content, size: "50x3" %></div>
+  <%= form.text_area :content, size: "50x3", placeholder: "コメントはこちら" %></div>
 <div class="actions"> <%= form.submit :投稿する %></div>
 
 <% end %>
