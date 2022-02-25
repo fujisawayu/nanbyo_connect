@@ -42,7 +42,7 @@
 
   <p style="text-align:center">
     <strong class="user_strong">生年月日:</strong>
-    <span class="user_a"><%= @user.birthday %></span>
+    <span class="user_a"><%= @user.birthday.strftime("%Y年%m月%d日") %></span>
   </p>
 
   <p style="text-align:center">
