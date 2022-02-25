@@ -3,10 +3,10 @@
     <%= link_to " 疾患一覧", diseases_path,id: @disease ,class:"btn btn-primary btn-lg fas fa-file-medical "%>
   </div>
   <br>
-  <% @onsets.each do |onset| %>
+  <% @onsets.sort_by {|onset| onset.disease_id}.each do |onset|%>
   <br>
-  <h5 style="text-align:center">告示番号<%= onset.disease.number %></h5>
-  <h2 style="text-align:center"><%= onset.disease.name %></h2>
+  <h5 style="text-align:center">告示番号<%=link_to onset.disease.number,disease_url(onset.disease_id) %></h5>
+  <h2 style="text-align:center"><%=link_to onset.disease.name,disease_url(onset.disease_id) %></h2>
   <% end %>
   <br>
   <p style="text-align:center">
