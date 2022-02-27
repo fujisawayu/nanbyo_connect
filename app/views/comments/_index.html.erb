@@ -20,7 +20,7 @@
             <%else %>
           <td nowrap> <img src=<%= comment.user.image %> width="90" height="90">
             <% end %>
-            <div><%= comment.user.name %></div>
+            <div><%= link_to comment.user.name, comment.user %></div>
             <%= comment.user.age %> /
             <%= comment.user.prefecture %>
             <br>
