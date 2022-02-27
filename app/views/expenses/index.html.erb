@@ -14,10 +14,10 @@
         <div class="card text-center">
           <div class="title">
             <i class="fa fa-procedures" aria-hidden="true"></i>
-            <h3>治療費平均</h3>
+            <h3>治療費月平均</h3>
           </div>
           <div class="price">
-            <h5><sup></sup>
+            <h5>
               <div style="text-align:center">
                 <%= number_to_currency(@expenses.average(:treatment_cost),:precision =>0, :format=>"%n%u", :unit=>"円")%>
             </h5>
@@ -31,7 +31,7 @@
         <div class="card text-center">
           <div class="title">
             <i class="fa fa-pills" aria-hidden="true"></i>
-            <h3>薬剤費平均</h3>
+            <h3>薬剤費月平均</h3>
           </div>
           <div class="price">
             <h5>
@@ -47,7 +47,7 @@
         <div class="card text-center">
           <div class="title">
             <i class="fa fa-yen-sign" aria-hidden="true"></i>
-            <h3>その他平均</h3>
+            <h3>その他月平均</h3>
           </div>
           <div class="price">
             <h5>
@@ -90,11 +90,11 @@
     <% @expenses.each do |expense| %>
     <tr>
       <% if expense.user.image.blank? %>
-      <td> <img src="/assets/icon.png" width="90" height="90">
+      <td> <img src="/assets/icon1.png" width="90" height="90">
         <%else %>
       <td nowrap width=15%> <img src=<%= expense.user.image %> width="90" height="90">
         <% end %>
-        <div><%= expense.user.name %></div>
+        <div><%= link_to expense.user.name , expense.user%></div>
         <%= expense.user.age %> /
         <%= expense.user.prefecture %>
         <br>
