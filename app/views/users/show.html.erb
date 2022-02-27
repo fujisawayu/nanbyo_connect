@@ -1,7 +1,7 @@
 <% if user_signed_in? && @user == current_user %>
 <h2 style="text-align:center"><%= @user.name %>さんのマイページ</h2>
 <% else %>
-<h1>ユーザーページ</h1>
+<h2 style="text-align:center"><%= @user.name %>さんのページ</h2>
 <% end %>
 <br>
 <div class="flame09">
@@ -15,10 +15,14 @@
   </p>
   <% end %>
   <br>
+  <%# 修正予定！ 各Userごとの登録疾患を表示%>
+  <% if @user.id == current_user.id%>
   <div style="text-align:center">
     <%= link_to ' 登録した疾患', onsets_path,id: @disease ,class:"btn btn-info btn-lg far fa-calendar-plus "%>
   </div>
-  <br>
+  <%end%>
+  <p><%= render 'stats' %></p>
+  <p><%= render 'follow_form', user: @user %></p>
 
   <p style="text-align:center">
     <strong class="user_strong">名前:</strong>
@@ -42,7 +46,7 @@
 
   <p style="text-align:center">
     <strong class="user_strong">生年月日:</strong>
-    <span class="user_a"><%= @user.birthday.strftime("%Y年%m月%d日") %></span>
+    <span class="user_a"><%= @user.birthday.strftime("%Y年%m月%d日") unless @user.birthday.blank? %></span>
   </p>
 
   <p style="text-align:center">
@@ -57,10 +61,11 @@
   </p>
 </div>
 
-<%# userとdisease.idをリレーションする%>
 
-<%#= link_to 'Edit', edit_user_path(@user) %>
-<%#= link_to 'ホームに戻る', root_path %>
+
+<%# userとdisease.idをリレーションする%>
+<%#= link_to '一覧', users_path %>
+
 <p style="text-align:center">
   <% if user_signed_in? && @user == current_user %>
   <%= link_to '戻る', root_path %>/

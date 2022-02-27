@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[ profile edit update]
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :prohibit_access
+  before_action :authenticate_user!, only: %i[ profile edit update index]
+  before_action :set_user, only: %i[show edit update]
+  before_action :prohibit_access, only: %i[edit update]
+
+
+  def index
+    @users = User.all
+  end
 
   def show
   end
@@ -16,6 +21,18 @@ class UsersController < ApplicationController
     else
       redirect_to edit_user_path(current_user), alert: "アカウント名(10文字以内)、メールアドレス、年齢、エリアは必ず入力してください"
     end
+  end
+
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
   end
 
   private

@@ -25,8 +25,9 @@
       <td><%= user.image %></td>
       <td><%= user.classification %></td>
       <td><%= link_to '詳細', user %></td>
-      <td><%= link_to '編集', edit_user_path(user) %></td>
-      <td><%= link_to '削除', user, method: :delete, data: { confirm: 'のエラーがあります' } %></td>
+      <%# <td><%= link_to '編集', edit_user_path(user) %>
+      <%# <td><%= link_to '削除', user, method: :delete, data: { confirm: 'のエラーがあります' } %>
+      <td> <%= render 'follow_form', user: user %></td>
     </tr>
     <% end %>
   </tbody>
@@ -34,4 +35,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%# <%= link_to 'New User', new_user_path %>
+
+<li><%= link_to 'ユーザー一覧', users_path %></li>
