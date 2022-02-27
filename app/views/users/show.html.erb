@@ -7,14 +7,13 @@
 <div class="flame09">
   <% if @user.image.blank? %>
   <p style="text-align:center">
-    <img src="/assets/icon.png" width="90" height="90">
+    <img src="/assets/icon1.png" width="90" height="90">
   </p>
   <% else%>
   <p style="text-align:center">
     <%= image_tag @user.image.url, size: '150x150' %>
   </p>
   <% end %>
-  <br>
   <%# 修正予定！ 各Userごとの登録疾患を表示%>
   <% if @user.id == current_user.id%>
   <div style="text-align:center">
