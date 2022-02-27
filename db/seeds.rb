@@ -8,17 +8,48 @@
     self_introduction: "ユーザー#{n+1}です。",
     classification: rand(1..10),
     birthday: Faker::Date.birthday(max_age: 90),
+    image:File.open("app/assets/images/icon1.png"),
+    admin: false
+  )
+end
+
+10.times do |n|
+  User.create!(
+    name: "user#{n+11}",
+    email: "user#{n+11}@test.com",
+    password: 'password',
+    age: rand(2..11),
+    prefecture: rand(1..47),
+    self_introduction: "ユーザー#{n+11}です。",
+    classification: rand(1..10),
+    birthday: Faker::Date.birthday(max_age: 90),
+    image:File.open("app/assets/images/icon2.png"),
+    admin: false
+  )
+end
+
+10.times do |n|
+  User.create!(
+    name: "patient#{n+1}",
+    email: "patient#{n+1}@test.com",
+    password: 'password',
+    age: rand(2..11),
+    prefecture: rand(1..47),
+    self_introduction: "patient#{n+1}です。",
+    classification: rand(1..10),
+    birthday: Faker::Date.birthday(max_age: 90),
+    image:File.open("app/assets/images/icon3.png"),
     admin: false
   )
 end
 
 User.create!(
-  name: 'ゲスト管理者',
+  name: '管理者',
   email: 'admin@test.com',
   password: 'admin01',
   age: '30代',
   prefecture: '東京都',
-  self_introduction: 'ゲスト管理者です。',
+  self_introduction: '管理者です。',
   classification: '本人',
   birthday: Faker::Date.birthday(max_age: 90),
   admin: true,
@@ -237,6 +268,16 @@ Disease.create!([
   {name: '完全大血管転位症', number: '209'},
   {name: '単心室症', number: '210'},
   {name: '左心低形成症候群', number: '211'},
+  {name: '三尖弁閉鎖症', number: '212'},
+  {name: '心室中隔欠損を伴わない肺動脈閉鎖症', number: '213'},
+  {name: '心室中隔欠損を伴う肺動脈閉鎖症', number: '214'},
+  {name: 'ファロー四徴症', number: '215'},
+  {name: '両大血管右室起始症', number: '216'},
+  {name: 'エプスタイン病', number: '217'},
+  {name: 'アルポート症候群', number: '218'},
+  {name: 'ギャロウェイ・モワト症候群', number: '219'},
+  {name: '急速進行性糸球体腎炎', number: '220'},
+  {name: '抗糸球体基底膜腎炎', number: '221'},  
   {name: '一次性ネフローゼ症候群', number: '222'},
   {name: '一次性膜性増殖性糸球体腎炎', number: '223'},
   {name: '紫斑病性腎炎', number: '224'},
@@ -356,48 +397,55 @@ Disease.create!([
   {name: '進行性家族性肝内胆汁うっ滞症', number: '338'}
 ])
 
-10.times do 
+20.times do 
   Expense.create!(
     treatment_cost: 100000,
     drug_cost: 80000,
     other_cost: 40000,
     disease_id: rand(1..5),
-    user_id: rand(1..11)
+    user_id: rand(1..31)
   )
   end
   
-10.times do 
+20.times do 
   Expense.create!(
     treatment_cost: 70000,
     drug_cost: 50000,
     other_cost: 30000,
     disease_id: rand(1..5),
-    user_id: rand(1..11),
+    user_id: rand(1..31),
   )
   end
 
-20.times do 
+30.times do 
 Treatment.create!(
   affected_on: Faker::Date.between(from: 50.days.ago, to: Date.today),
   drug_name: Faker::Science.modifier,
   content: Faker::Quote.jack_handey,
   advice: Faker::Quotes::Shakespeare.as_you_like_it_quote,
   disease_id: rand(1..5),
-  user_id: rand(1..11)
+  user_id: rand(1..31)
 )
 end
 
-20.times do
+30.times do
 Comment.create!(
   disease_id: rand(1..5),
   content: Faker::Quote.singular_siegler,
-  user_id: rand(1..11),
+  user_id: rand(1..31),
 )
 end
 
-20.times do
+30.times do
 Onset.create!(
   disease_id: rand(1..5),
-  user_id: rand(1..11),
+  user_id: rand(1..31),
+)
+end
+
+30.times do
+  Relationship.create!(
+    follower_id: rand(1..31),
+    followed_id: rand(1..31),
 )
 end

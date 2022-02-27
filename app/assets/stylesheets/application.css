@@ -387,3 +387,8 @@ font-size: 16px;
 .card a:hover{
     text-decoration: none;
 }
+
+/* user show フォローボタン */
+.follow{
+  width: 30%;
+}
