@@ -1,0 +1,30 @@
+<h2 style="text-align:center"><%= @user.name %>さんのフォローリスト</h2>
+<% if @user.following.blank? %>
+<h5 style="text-align:center">フォローやメッセージをすると繋がりが広がります</h5>
+<% elsif %>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th nowrap scope="col"></th>
+      <th nowrap scope="col">名前</th>
+      <th nowrap scope="col">年齢</th>
+      <th nowrap scope="col">エリア</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.following.each do |user| %>
+    <tr>
+      <% if user.image.blank? %>
+      <td> <img src="/assets/icon.png" width="90" height="90">
+        <%else %>
+      <td nowrap width=15%> <img src=<%= user.image %> width="90" height="90">
+        <% end %>
+      <td> <%= link_to user.name, user_path(user) %> </td>
+      <td> <%= user.age %> </td>
+      <td> <%= user.prefecture %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
