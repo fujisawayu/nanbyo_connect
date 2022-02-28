@@ -27,11 +27,11 @@
     <% @treatments.each do |treatment| %>
     <tr>
       <% if treatment.user.image.blank? %>
-      <td> <img src="/assets/icon.png" width="90" height="90">
+      <td> <img src="/assets/icon1.png" width="90" height="90">
         <%else %>
       <td nowrap width=15%> <img src=<%= treatment.user.image %> width="90" height="90">
         <% end %>
-        <div><%= treatment.user.name %></div>
+        <div><%= link_to treatment.user.name, treatment.user %></div>
         <%= treatment.user.age %> /
         <%= treatment.user.prefecture %>
         <br>

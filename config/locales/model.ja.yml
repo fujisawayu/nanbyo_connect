@@ -9,6 +9,7 @@ ja:
       expense: 治療費情報
       treatment: 治療情報
       onset: 発病
+      relationship: フォロー
     attributes:
       disease:
         number: 告示番号
