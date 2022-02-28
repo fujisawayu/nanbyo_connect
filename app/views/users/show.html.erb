@@ -60,11 +60,8 @@
   </p>
 </div>
 
-
-
 <%# userとdisease.idをリレーションする%>
 <%#= link_to '一覧', users_path %>
-
 <p style="text-align:center">
   <% if user_signed_in? && @user == current_user %>
   <%= link_to '戻る', root_path %>/

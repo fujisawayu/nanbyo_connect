@@ -1,7 +1,7 @@
 class DiseasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_disease, only: %i[ show edit update destroy ]
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: %i[index search]
   before_action :prohibit_access, only: %i[ new create edit update destroy ]
 
   def index
@@ -23,7 +23,6 @@ class DiseasesController < ApplicationController
 
   def create
     @disease = Disease.new(disease_params)
-
     respond_to do |format|
       if @disease.save
         format.html { redirect_to disease_url(@disease) }

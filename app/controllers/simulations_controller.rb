@@ -3,6 +3,7 @@ class SimulationsController < ApplicationController
   before_action :set_simulation, only: %i[ show edit update destroy ]
   before_action :prohibit_access, only: %i[ index edit update destroy ]
   before_action :prohibit_show_access, only: %i[ show ]
+
   def index
     @simulations = Simulation.all
   end
@@ -54,20 +55,19 @@ class SimulationsController < ApplicationController
   end
 
   private
-    def set_simulation
-      @simulation = Simulation.find(params[:id])
-    end
+  def set_simulation
+    @simulation = Simulation.find(params[:id])
+  end
 
-    def simulation_params
-      params.require(:simulation).permit(:diagnose_id, :severitie_id, :hierarchie_id, :long_term_id, :remark_id, :user_id)
-    end
+  def simulation_params
+    params.require(:simulation).permit(:diagnose_id, :severitie_id, :hierarchie_id, :long_term_id, :remark_id, :user_id)
+  end
 
-    def prohibit_access
-      redirect_to  root_path, alert: 'アクセス権がありません' unless current_user.admin?
-    end
+  def prohibit_access
+    redirect_to  root_path, alert: 'アクセス権がありません' unless current_user.admin?
+  end
 
-    def prohibit_show_access
-      redirect_to  root_path, notice: 'アクセス権がありません' unless @simulation.user_id == current_user.id
-    end
-
+  def prohibit_show_access
+    redirect_to  root_path, notice: 'アクセス権がありません' unless @simulation.user_id == current_user.id
+  end
 end

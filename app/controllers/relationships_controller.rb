@@ -10,5 +10,4 @@ class RelationshipsController < ApplicationController
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow!(@user)
   end
-
 end

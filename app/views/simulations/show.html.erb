@@ -1,5 +1,4 @@
 <%#メソッド化して場所を移す%>
-
 <% @nintei =  @simulation.severitie_id ==1 && @simulation.diagnose_id == 1 %>
 <% @seiho =  @nintei == true && @simulation.hierarchie_id == 1 %>
 <% @kokyuki = @nintii == true && @simulation.remark_id == 1%>
@@ -12,7 +11,6 @@
   <%= "お知らせ"%></h3>
 <% end %>
 <br><br><br>
-
 <div class="simulation_total ">
   <h1 style="text-align:center">
     <% if @nintei == false %>
@@ -49,10 +47,8 @@
 <br><br>
 <%# ここまで確認済み リファクタリング必須%>
 
-
-
-
 <%#= link_to 'Edit', edit_simulation_path(@simulation) %>
 <p style="text-align:center">
   <%= link_to '戻る', new_simulation_path %>
-  <%= link_to 'ホームに戻る', root_path %></p>
+  <%= link_to 'ホームに戻る', root_path %>
+</p>

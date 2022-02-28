@@ -33,13 +33,6 @@ footer {
   opacity: 0.7;
 }  */
 
-
-* {
-  margin: 0px;
-  padding: 0px;
-  text-decoration: none;
-}
-
 .box {
   width: 350px;
   height: 450px;
@@ -231,6 +224,7 @@ h2:after {
   box-shadow:1px 1px 4px rgba(0,0,0,0.2);
   color:#795548;
   }
+
   .memox::before{
   content:"What's Nanbyo Connect ..";
   position:relative;
@@ -242,6 +236,7 @@ h2:after {
   font-weight:bold;
   transform: rotate(-5deg);
   }
+
   .memox::after{
   content:'';
   position:absolute;
@@ -254,10 +249,12 @@ h2:after {
   box-shadow:1px 1px 4px rgba(0,0,0,0.2);
   transform: rotate(-4deg);
   }
+
   .memox ol{
   margin:1em 0.5em 0 2em;
   padding:0 0 0 0;
   }
+  
   .memox ol li{
   margin-bottom:0.5em;
   }
@@ -306,12 +303,10 @@ transition: .5s;
 .col-sm-4:nth-child(2) .card,
 .col-sm-4:nth-child(2) .card .title .fa{
   background: linear-gradient(-45deg,#ffec61,#f321d7);
-
 }
 .col-sm-4:nth-child(3) .card,
 .col-sm-4:nth-child(3) .card .title .fa{
   background: linear-gradient(-45deg,#24ff72,#9a4eff);
-
 }
 .card::before{
   content: '';
