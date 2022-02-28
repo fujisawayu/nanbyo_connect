@@ -1,5 +1,5 @@
-<h1>Editing Expenses</h1>
-
+<h2 style="text-align:center">治療情報の編集</h2>
+<br>
 <%= form_with(model: [@treatment.disease, @treatment], local: true) do |form| %>
 <% if @treatment.errors.any? %> <div id="error_explanation">
   <h2><%= pluralize(@treatment.errors.count, "件") %> のエラーがあります</h2>
@@ -11,32 +11,34 @@
   </ul>
 </div>
 <% end %>
-<div class="field">
+<div class="user_field">
   <%= form.label :罹患日 %>
   <%= form.date_field :affected_on %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :薬剤名 %>
   <%= form.text_field :drug_name %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :内容 %>
   <%= form.text_area :content %>
 </div>
 
-<div class="field">
+<div class="user_field">
   <%= form.label :アドバイス %>
   <%= form.text_area :advice %>
 </div>
-
+<br>
 <div class="actions">
   <%= form.submit %>
 </div>
-
+<br>
 <% end %>
-<%#= render 'form', expense: @expense %>
 
-<%#= link_to 'Show', @expense %> |
-<%= link_to 'Back', disease_treatments_path(@treatment.disease_id) %>
+<%#= render 'form', expense: @expense %>
+<%#= link_to 'Show', @expense %>
+<div style="text-align:center">
+  <%= link_to '戻る', disease_treatments_path(@treatment.disease_id) %>
+</div>
