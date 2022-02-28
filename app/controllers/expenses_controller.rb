@@ -24,7 +24,6 @@ class ExpensesController < ApplicationController
     @expense.disease_id = params[:disease_id]
     @disease = Disease.find(params[:disease_id])
     @expense.user_id = current_user.id
-
     respond_to do |format|
       if @expense.save
   
@@ -59,14 +58,15 @@ class ExpensesController < ApplicationController
   end
 
   private
-    def set_expense
-      @expense = Expense.find(params[:id])
-    end
+  def set_expense
+    @expense = Expense.find(params[:id])
+  end
 
-    def expense_params
-      params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id, :user_id)
-    end
-    def prohibit_access
-      redirect_to  root_path, alert: 'アクセス権がありません' unless @expense.user_id == current_user.id
-    end
+  def expense_params
+    params.require(:expense).permit(:treatment_cost, :drug_cost, :other_cost, :disease_id, :user_id)
+  end
+  
+  def prohibit_access
+    redirect_to  root_path, alert: 'アクセス権がありません' unless @expense.user_id == current_user.id
+  end
 end

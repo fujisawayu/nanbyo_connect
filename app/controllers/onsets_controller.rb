@@ -13,5 +13,4 @@ class OnsetsController < ApplicationController
     onset = current_user.onsets.find_by(id: params[:id]).destroy
     redirect_to disease_url(onset.disease_id), notice: "#{onset.disease.name}を登録解除しました"
   end
-
 end

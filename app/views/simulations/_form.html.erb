@@ -2,7 +2,6 @@
 <% if simulation.errors.any? %>
 <div id="error_explanation">
   <h2 style="text-align:center"><%= pluralize(simulation.errors.count, "件") %>のエラーがあります</h2>
-
   <ul>
     <% simulation.errors.full_messages.each do |message| %>
     <li style="text-align:center"><%= message %></li>
@@ -37,14 +36,13 @@
 <p class='simulation_text'>上位所得</p>
 <p class='simulation_text'>・市町村住民税25.1万円以上(約810万円〜)</p>
 <br>
-
+<%# ここまで　%>
 <div class='user_field'>
   <%= form.collection_select(:hierarchie_id, Hierarchie.all, :id, :name,{include_blank: "---"} ) %>
 </div>
 <br>
 <p class='simulation_text'>高額な医療が長期に継続していますか？</p>
 <p class='simulation_text'>注意：対象となるのは指定難病についての特定医療の月ごとの医療費総額が5万円を超える月が、申請日の月以前12月で既に6回以上ある方です。</p>
-
 <div class='user_field'>
   <%= form.collection_select(:long_term_id, LongTerm.all, :id, :name,{include_blank: "---"} ) %>
 </div>

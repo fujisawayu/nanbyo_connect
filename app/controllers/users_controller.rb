@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
   before_action :prohibit_access, only: %i[edit update]
 
-
   def index
     @users = User.all
   end
@@ -45,6 +44,6 @@ class UsersController < ApplicationController
   end
 
   def prohibit_access
-      redirect_to  root_path, alert: 'アクセス権がありません' unless @user.id == current_user.id
+    redirect_to  root_path, alert: 'アクセス権がありません' unless @user.id == current_user.id
   end
 end

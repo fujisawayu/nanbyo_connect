@@ -4,6 +4,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user! 
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :prohibit_access, only: %i[ index show new create edit update destroy ]
 
   def index
     @events = Event.all
@@ -57,11 +58,15 @@ class EventsController < ApplicationController
   end
 
   private
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    def event_params
-      params.require(:event).permit(:scheduled_on, :place, :title, :content, :user_id)
-    end
+  def event_params
+    params.require(:event).permit(:scheduled_on, :place, :title, :content, :user_id)
+  end
+
+  def prohibit_access
+    redirect_to  root_path, alert: 'アクセス権がありません' unless current_user.admin?
+  end
 end

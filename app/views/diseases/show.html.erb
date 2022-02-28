@@ -12,6 +12,7 @@
 
   <%= link_to " 治療費一覧", "/diseases/#{@disease.id}/expenses",id: @disease ,class:"btn btn-primary btn-lg fas fa-comments-dollar"%>
 </div>
+
 <!-- コメント入力欄をブログの詳細ページに表示するためのrender上 -->
 <%= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
 
@@ -23,10 +24,7 @@
   <%= render partial: 'comments/index', locals: { comments: @comments, disease: @disease } %>
 </div>
 
-<!-- コメント入力欄をブログの詳細ページに表示するためのrender下 -->
-<%#= render partial: 'comments/form', locals: { comment: @comment, disease: @disease } %>
-
-
 <%#= link_to 'Edit', edit_disease_path(@disease) %>
 <div style="text-align:center">
-  <%= link_to '戻る', diseases_path %></div>
+  <%= link_to '戻る', diseases_path %>
+</div>

@@ -6,5 +6,4 @@ class Treatment < ApplicationRecord
   validates :drug_name,  presence: true
   validates :content,  presence: true
   validates :advice,  presence: true
-
 end

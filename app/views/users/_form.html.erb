@@ -2,7 +2,6 @@
 <% if user.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
   <ul>
     <% user.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -17,7 +16,6 @@
   <% unless @user.image.blank? %>
   <%= image_tag @user.image.url, size: '150x150' %>
   <% end %>
-
 </div>
 
 <div class="user_field">
@@ -54,7 +52,6 @@
   <%= form.label :classification %>
   <%= form.select :classification, User.classifications.keys, {} %>
 </div>
-
 <br>
 <div class="actions">
   <%= form.submit %>
