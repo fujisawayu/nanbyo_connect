@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-
+  resources :conversations do
+    resources :messages
+  end
 
   resources :diseases do
     resources :treatments
