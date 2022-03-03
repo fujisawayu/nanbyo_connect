@@ -1,34 +1,55 @@
 <% if @over_ten %>
-<%= link_to '以前のメッセージ', '?m=all' %>
+<%= link_to '過去のメッセージを表示する', '?m=all' %>
 <% end %>
 
-<div class="ui segment">
-  <% @messages.each do |message| %>
-  <% if message.body.present? %>
-  <div class="item">
-    <div class="content">
-      <div class="header"><strong><%= message.user.name %></strong> <%= message.message_time %></div>
-      <div class="list">
-        <div class="item">
-          <i class="right triangle icon"></i>
-          <%= message.body %> /
-          <% if message.user == current_user %>
-          <%= message.read ? '既読' : '未読' %>
+<div class="container main-contents">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <table class="head message-container">
+        <tr>
+          <th style="text-align: left; font-size: 1rem;"><%= "" %></th>
+          <th style="text-align: left; font-size: 1rem;"><%= "" %></th>
+        </tr>
+      </table>
+      <table class="message table">
+        <% @messages.each do |message| %>
+        <% if message.body.present? %>
+        <% if message.user_id != current_user.id %>
+        <tbody class='message'>
+          <tr>
+            <td>
+              <div class="text-align: left;"><%=link_to message.user.name, message.user %>
+                <%= message.message_time %></div>
+              <p style="text-align: left;"><%= message.body %></p>
+              <p style="text-align: left;"><%= message.read ? '既読' : '未読' %></p>
+            </td>
+          </tr>
+          <% else %>
+          <tr>
+            <td>
+              <p style="text-align: right;"><%= current_user.name%>
+                <%= message.message_time %></p>
+              <p style="text-align: right;"><%= message.body %></p>
+              <p style="text-align: right;"><%= message.read ? '既読' : '未読' %></p>
+            </td>
+          </tr>
           <% end %>
-        </div>
-      </div>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-  <% end %>
-  <% end %>
-</div>
-
+</div><br>
 <%= form_with(model: [@conversation, @message], remote: true) do |f| %>
-<div class="field">
-  <%= f.text_area :body, class: "form-control" %>
+<div class="user_field">
+  <%= f.text_area :body, class: "form-control", placeholder: "メッセージを入力してください" %>
 </div>
 <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-<div>
-  <%= f.submit "メッセージを送る" %>
+<div class="user_field">
+  <%= f.submit "メッセージを送る"%>
 </div>
+<br>
 <% end %>

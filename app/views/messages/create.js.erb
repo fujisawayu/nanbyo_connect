@@ -1,3 +1,6 @@
-$('#message').html("<%= j(render 'messages/index', messages: @messages) %>");
-$("text_area").val("");
-$("#text").val("");
+$('.message').append("<p style='text-align: right;'><%= current_user.name %><%= @message.message_time %></p>\
+<p style='text-align: right;'><%= @message.body %></p>\
+<p style='text-align: right;'><%= @message.read ? '既読' : '未読' %></p>");
+
+$('textarea').val("")
+<%# $(".comment-error").html(""); %>
