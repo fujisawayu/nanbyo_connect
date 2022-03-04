@@ -32,6 +32,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message = @conversation.messages.find(params[:id])
+    @message.destroy
+  end
+
   private
   def message_params
     params.require(:message).permit(:body, :user_id)

@@ -1,3 +1,8 @@
+<% if alert %>
+<p class="alert alert-danger"><%= alert %><button type="button" class="close" data-dismiss="alert">&times;</button>
+</p>
+<% end %>
+
 <% if @over_ten %>
 <%= link_to '過去のメッセージを表示する', '?m=all' %>
 <% end %>
@@ -20,19 +25,22 @@
         <tbody class='message'>
           <tr>
             <td>
-              <div class="text-align: left;"><%=link_to message.user.name, message.user %>
-                <%= message.message_time %></div>
+              <p class="text-align: left;"><%=link_to message.user.name, message.user %>
+                <%= message.message_time %></p>
               <p style="text-align: left;"><%= message.body %></p>
               <p style="text-align: left;"><%= message.read ? '既読' : '未読' %></p>
             </td>
           </tr>
           <% else %>
           <tr>
-            <td>
+            <td id="mymessage_<%= message.id %>">
               <p style="text-align: right;"><%= current_user.name%>
                 <%= message.message_time %></p>
               <p style="text-align: right;"><%= message.body %></p>
               <p style="text-align: right;"><%= message.read ? '既読' : '未読' %></p>
+              <%= link_to "削除",conversation_message_path(@conversation,message), method: :delete, remote: true,
+                                        data: { confirm: "本当に削除しますか?"} %>
+            </td>
             </td>
           </tr>
           <% end %>
