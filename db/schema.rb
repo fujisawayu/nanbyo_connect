@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_26_101256) do
+ActiveRecord::Schema.define(version: 2022_03_02_132504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2022_02_26_101256) do
     t.bigint "user_id"
     t.index ["disease_id"], name: "index_comments_on_disease_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id", "recipient_id"], name: "index_conversations_on_sender_id_and_recipient_id", unique: true
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "diseases", force: :cascade do |t|
@@ -53,6 +63,17 @@ ActiveRecord::Schema.define(version: 2022_02_26_101256) do
     t.bigint "user_id"
     t.index ["disease_id"], name: "index_expenses_on_disease_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "onsets", force: :cascade do |t|
@@ -138,6 +159,8 @@ ActiveRecord::Schema.define(version: 2022_02_26_101256) do
   add_foreign_key "events", "users"
   add_foreign_key "expenses", "diseases"
   add_foreign_key "expenses", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "onsets", "diseases"
   add_foreign_key "onsets", "users"
   add_foreign_key "simulations", "users"
