@@ -1,3 +1,23 @@
-// Place all the styles related to the Messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.table td, .table th {
+  border-top: 0px none;
+}
+
+.right-message {
+  margin-left: 400px;
+  background-color: #27dd73;
+  padding: 10px;
+  flex-wrap: wrap;
+  border: 2px solid #333;
+  background: #efefef;
+  border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+}
+
+.left-message {
+  margin-right: 400px;
+  background-color: rgb(234, 241, 245);
+  padding: 10px;
+  flex-wrap: wrap;
+  border: 2px solid #333;
+  background: #efefef;
+  border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+}

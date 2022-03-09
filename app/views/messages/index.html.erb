@@ -7,7 +7,7 @@
 <%= link_to '過去のメッセージを表示する', '?m=all' %>
 <% end %>
 
-<div class="container main-contents">
+<div class="container">
   <div class="row">
     <div class="col-md-1">
     </div>
@@ -18,35 +18,14 @@
           <th style="text-align: left; font-size: 1rem;"><%= "" %></th>
         </tr>
       </table>
-      <table class="message table">
+      <table class="message container">
         <% @messages.each do |message| %>
-        <% if message.body.present? %>
-        <% if message.user_id != current_user.id %>
-        <tbody class='message'>
-          <tr>
-            <td>
-              <p class="text-align: left;"><%=link_to message.user.name, message.user %>
-                <%= message.message_time %></p>
-              <p style="text-align: left;"><%= message.body %></p>
-              <p style="text-align: left;"><%= message.read ? '既読' : '未読' %></p>
-            </td>
-          </tr>
-          <% else %>
-          <tr>
-            <td id="mymessage_<%= message.id %>">
-              <p style="text-align: right;"><%= current_user.name%>
-                <%= message.message_time %></p>
-              <p style="text-align: right;"><%= message.body %></p>
-              <p style="text-align: right;"><%= message.read ? '既読' : '未読' %></p>
-              <%= link_to "削除",conversation_message_path(@conversation,message), method: :delete, remote: true,
-                                        data: { confirm: "本当に削除しますか?"} %>
-            </td>
-            </td>
-          </tr>
-          <% end %>
-          <% end %>
-          <% end %>
-        </tbody>
+
+        <div>
+          <%= render partial:'message', locals: {message: message}%>
+        </div>
+
+        <% end %>
       </table>
     </div>
   </div>

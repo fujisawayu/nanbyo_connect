@@ -4,32 +4,41 @@
 <h2 style="text-align:center"><%= @user.name %>さんのページ</h2>
 <% end %>
 <br>
-<div class="flame09">
-  <% if @user.image.blank? %>
-  <p style="text-align:center">
-    <img src="/assets/icon1.png" width="90" height="90">
-  </p>
-  <% else%>
-  <p style="text-align:center">
-    <%= image_tag @user.image.url, size: '150x150' %>
-  </p>
-  <% end %>
+<div>
+  <div class="flame09">
+    <% if @user.image.blank? %>
+    <div style="text-align:center">
+      <img src="/assets/icon1.png" width="150" height="150">
+    </div>
+    <% else%>
+    <div style="text-align:center">
+      <%= image_tag @user.image.url, size: '150x150' %>
+    </div>
+    <% end %>
+
+    <%# メッセージ　%>
+    <% if @user.id != current_user.id %>
+    <p style="text-align:center">
+      <%= link_to '', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class:"btn btn-info btn-lg fas fa-envelope "%>
+    </p>
+    <p><%= render 'follow_form', user: @user %></p>
+
+    <%end%>
+    <%# メッセージ一覧　%>
+    <% if @user.id == current_user.id %>
+    <p style="text-align:center">
+      <%= link_to '',conversations_path, class:"btn btn-info btn-lg fas fa-envelope " %>
+      <%= render 'stats' %></p>
+    <% end %>
+  </div>
+
+
   <%# 修正予定！ 各Userごとの登録疾患を表示%>
   <% if @user.id == current_user.id%>
-  <div style="text-align:center">
-    <%= link_to ' 登録した疾患', onsets_path,id: @disease ,class:"btn btn-info btn-lg far fa-calendar-plus "%>
-  </div>
+  <p style="text-align:center">
+    <%= link_to ' 登録した疾患', onsets_path,id: @disease ,class:"btn far fa-calendar-plus "%>
+  </p>
   <%end%>
-  <p><%= render 'stats' %></p>
-  <p><%= render 'follow_form', user: @user %></p>
-
-  <% if @user.id != current_user.id %>
-  <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post %>
-  <%end%>
-
-  <% if @user.id == current_user.id %>
-  <%= link_to 'メッセージ一覧',conversations_path %>
-  <% end %>
 
   <p style="text-align:center">
     <strong class="user_strong">名前:</strong>

@@ -1,9 +1,3 @@
-$('.message').append("<tr>\
-  <td>\
-    <p style='text-align: right;'><%= current_user.name %><%= @message.message_time %></p>\
-    <p style='text-align: right;'><%= @message.body %></p>\
-    <p style='text-align: right;'><%= @message.read ? '既読' : '未読' %></p>\
-  </td>\
-</tr>");
+$('.message').append("<%= j(render partial: 'message', locals: { message: @message }) %>");
 $('textarea').val("")
 <%# $(".comment-error").html(""); %>
