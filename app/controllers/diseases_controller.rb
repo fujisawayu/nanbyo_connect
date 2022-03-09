@@ -9,7 +9,7 @@ class DiseasesController < ApplicationController
   end
 
   def show
-    @comments = @disease.comments
+    @comments = @disease.comments.page(params[:page]).per(10)
     @comment = @disease.comments.build
     @onset = current_user.onsets.find_by(disease_id: @disease.id)
   end

@@ -29,7 +29,8 @@
       </table>
     </div>
   </div>
-</div><br>
+</div>
+<p><%= paginate @messages%></p>
 <%= form_with(model: [@conversation, @message], remote: true) do |f| %>
 <div class="user_field">
   <%= f.text_area :body, class: "form-control", placeholder: "メッセージを入力してください" %>
