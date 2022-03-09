@@ -1,0 +1,33 @@
+<% if message.body.present? %>
+<% if message.user_id != current_user.id %>
+<tr>
+  <div class="left-box">
+    <div>
+      <th class=" m_filed" id="usermessage">
+        <div class="left-message" style="text-align: left;"><%=link_to message.user.name, message.user %>
+          <%= message.message_time %>
+          <div style="text-align: left;"><%= message.body %>
+            <div style="text-align: left;"><%= message.read ? '既読' : '未読' %></div>
+      </th>
+    </div>
+</tr>
+<th class="space-box">
+</th>
+<% else %>
+<tr>
+  <div class="right-box">
+    <div>
+      <th class="m_filed" id="mymessage_<%= message.id %>">
+        <div class="right-message" style="text-align: right;"><%= current_user.name%>
+          <%= message.message_time %>
+          <div style="text-align: right;"><%= message.body %>
+            <div style="text-align: right;"><%= message.read ? '既読' : '未読' %>
+              <div style="text-align: right;"><%= link_to "削除",conversation_message_path(@conversation,message), method: :delete, remote: true,
+                                        data: { confirm: "本当に削除しますか?"} %></div>
+      </th>
+    </div>
+</tr>
+<th class="space-box">
+</th>
+<% end %>
+<% end %>
