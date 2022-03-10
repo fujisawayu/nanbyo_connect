@@ -24,9 +24,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300&display=swap" rel="stylesheet">
 </head>
 <a class="display-4">Nanbyo Connect</a>
-<% if user_signed_in? %>
-<a class="text-right display-12 fas fa-user"><%= current_user.name %>さん</a>
-<% end %>
+
+<div class="text-right">
+  <% if user_signed_in? %>
+  <a class="far fa-envelope"><%= link_to "メッセージを確認する",conversations_path %></a>
+  <a class="display-12 fas fa-user"><%= current_user.name %>さん</a>
+  <% end %>
+</div>
+
 <header>
 </header>
 

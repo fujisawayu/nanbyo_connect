@@ -1,14 +1,17 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
+  before_action :find_id
+  before_action :prohibit_access
 
   #リファクタリング
   def index 
-    @messages = @conversation.messages
-    if @messages.length > 10
+    @messages = @conversation.messages #.page(params[:page]).per(10) 読み込みに変更
+    if @messages.length > 20
       @over_ten = true
-      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+      @messages = Message.where(id: @messages[-20..-1].pluck(:id))
     end
   
     if params[:m]
@@ -40,5 +43,14 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :user_id)
+  end
+
+  #アクセス制限用に@conversationを作成
+  def find_id
+    @conversation = Conversation.find(params[:conversation_id])
+  end
+
+  def prohibit_access
+    redirect_to root_path, alert: 'アクセス権がありません' unless @conversation.sender_id == current_user.id || @conversation.recipient_id == current_user.id
   end
 end
