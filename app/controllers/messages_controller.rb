@@ -3,6 +3,8 @@ class MessagesController < ApplicationController
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
+  before_action :find_id
+  before_action :prohibit_access
 
   #リファクタリング
   def index 
@@ -41,5 +43,14 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :user_id)
+  end
+
+  #アクセス制限用に@conversationを作成
+  def find_id
+    @conversation = Conversation.find(params[:conversation_id])
+  end
+
+  def prohibit_access
+    redirect_to root_path, alert: 'アクセス権がありません' unless @conversation.sender_id == current_user.id || @conversation.recipient_id == current_user.id
   end
 end
