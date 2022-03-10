@@ -1,14 +1,15 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
 
   #リファクタリング
   def index 
-    @messages = @conversation.messages.page(params[:page]).per(10)
-    if @messages.length > 10
+    @messages = @conversation.messages #.page(params[:page]).per(10) 読み込みに変更
+    if @messages.length > 20
       @over_ten = true
-      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+      @messages = Message.where(id: @messages[-20..-1].pluck(:id))
     end
   
     if params[:m]
