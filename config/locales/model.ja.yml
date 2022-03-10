@@ -10,6 +10,8 @@ ja:
       treatment: 治療情報
       onset: 発病
       relationship: フォロー
+      message: メッセージ
+      conversation: メッセージルーム
     attributes:
       disease:
         number: 告示番号
