@@ -58,14 +58,6 @@ RSpec.describe 'User機能', type: :system do
         expect(page).to have_content 'プロフィールを更新しました'
       end
     end
-    context 'Userが他のUserのプロフィールを編集する場合' do
-      it 'アクセス権が無い旨が表示される' do
-        login
-        visit "/users/#{@admin_user.id}"
-        expect(page).to have_content 'アクセス権がありません'
-      end
-    end
   end
-
-  end  
+ end  
 end
