@@ -26,8 +26,8 @@
 <a class="display-4">Nanbyo Connect</a>
 
 <div class="text-right">
-  <a class="far fa-envelope"><%= link_to "メッセージを確認する",conversations_path %></a>
   <% if user_signed_in? %>
+  <a class="far fa-envelope"><%= link_to "メッセージを確認する",conversations_path %></a>
   <a class="display-12 fas fa-user"><%= current_user.name %>さん</a>
   <% end %>
 </div>
