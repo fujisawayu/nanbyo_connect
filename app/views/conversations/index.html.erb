@@ -1,10 +1,16 @@
 <h2 style="text-align:center">メッセージ一覧</h2>
 
 
-<% @conversations.each do |conversation| %>
-
-<div style="text-align:center"><% if conversation.target_user(current_user).present? %>
-  <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%></div><br>
-<% end %>
-
-<% end %>
+<div>
+  <% @conversations.each do |conversation| %>
+  <div style="text-align:center"><strong><% if conversation.target_user(current_user).present? %>
+      <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%></div>
+  <% unless conversation.messages.where(user_id: conversation.target_user(current_user)).where(read: false).count == 0 %>
+  <div style="text-align:center">
+    <%=conversation.target_user(current_user).name%>さんから<%= conversation.messages.where(user_id: conversation.target_user(current_user)).where(read: false).count%>件のメッセージがあります
+  </div>
+  <% end %>
+  <br>
+  <% end %>
+  <% end %>
+</div>
