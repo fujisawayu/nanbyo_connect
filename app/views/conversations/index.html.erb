@@ -1,16 +1,32 @@
 <h2 style="text-align:center">メッセージ一覧</h2>
 
+<table>
+  <thead>
+    <tr>
+      <th scope="col" , nowrap width=15%, style="text-align:right"> メッセージリスト</th>
+      <th scope="col" , nowrap width=30%, style="text-align:center">新着メッセージの情報はここに表示されます</th>
+    </tr>
+  </thead>
 
-<div>
-  <% @conversations.each do |conversation| %>
-  <div style="text-align:center"><strong><% if conversation.target_user(current_user).present? %>
-      <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%></div>
-  <% unless conversation.messages.where(user_id: conversation.target_user(current_user)).where(read: false).count == 0 %>
-  <div style="text-align:center">
-    <%=conversation.target_user(current_user).name%>さんから<%= conversation.messages.where(user_id: conversation.target_user(current_user)).where(read: false).count%>件のメッセージがあります
-  </div>
-  <% end %>
-  <br>
-  <% end %>
-  <% end %>
-</div>
+  <tbody>
+
+    <% @conversations.each do |conversation| %>
+    <tr>
+      <td style="text-align:right"><% if conversation.target_user(current_user).present? %>
+        <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
+      </td>
+      <td style="text-align:center">
+        <% unless conversation.messages.where(user_id: conversation.target_user(current_user)).where(read: false).count == 0 %>
+        <%=conversation.target_user(current_user).name%>さんから<%= conversation.messages.where(user_id: conversation.target_user(current_user)).where(read: false).count%>件のメッセージがあります
+      </td>
+    </tr>
+    <% end %>
+    <br>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<p style="text-align:center">
+  <%= link_to '戻る', user_path(current_user.id) %>
+</p>
