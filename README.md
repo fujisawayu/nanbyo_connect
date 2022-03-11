@@ -11,13 +11,13 @@
 - フォロー機能
 - コメント機能
 - お気に入り機能
-- gem devise
-- gem rails_admin
-- gem cancancan
-- gem carrierwave
-- gem ransack
+- ログイン機能 (devise)
+- 管理者機能 (rails_admin)
+- 権限管理 (cancancan)
+- 画像投稿機能 (carrierwave)
+- 検索機能 (ransack)
+- ページネーション (kaminari)
 - gem active_hash
-- gem kaminari
 
 ## 実行手順
 
