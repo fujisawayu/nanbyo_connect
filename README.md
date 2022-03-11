@@ -5,15 +5,19 @@
 - Ruby 3.0.1
 - Rails 6.0.4
 
-## 就業 Term の技術
+## 取り入れた技術
 
-- devise
+- メッセージ機能
+- フォロー機能
 - コメント機能
-
-## カリキュラム外の技術
-
-- ransack
-- active_hash
+- お気に入り機能
+- gem devise
+- gem rails_admin
+- gem cancancan
+- gem carrierwave
+- gem ransack
+- gem active_hash
+- gem kaminari
 
 ## 実行手順
 
