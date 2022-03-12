@@ -16,6 +16,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true, length: { in: 1..10 }
+  validates :self_introduction, length: { in: 1..1000 }
 
   enum prefecture:{
     "---":0,
