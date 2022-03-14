@@ -32,7 +32,6 @@
   <% if @over_ten %>
   <%= link_to '過去のメッセージを表示する', '?m=all' %>
   <% end %></div>
-<%# <p><%= paginate @messages%>
 <%= form_with(model: [@conversation, @message], remote: true) do |f| %>
 <div class="user_field">
   <%= f.text_area :body, class: "form-control", placeholder: "メッセージを入力してください" %>

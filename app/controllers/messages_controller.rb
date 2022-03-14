@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
   before_action :find_id
   before_action :prohibit_access
 
-  #リファクタリング
   def index 
     @messages = @conversation.messages #.page(params[:page]).per(10) 読み込みに変更
     if @messages.length > 20
