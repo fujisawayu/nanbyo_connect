@@ -5,15 +5,19 @@
 - Ruby 3.0.1
 - Rails 6.0.4
 
-## 就業 Term の技術
+## 取り入れた技術
 
-- devise
+- メッセージ機能
+- フォロー機能
 - コメント機能
-
-## カリキュラム外の技術
-
-- ransack
-- active_hash
+- お気に入り機能
+- ログイン機能 (devise)
+- 管理者機能 (rails_admin)
+- 権限管理 (cancancan)
+- 画像投稿機能 (carrierwave)
+- 検索機能 (ransack)
+- ページネーション (kaminari)
+- gem active_hash
 
 ## 実行手順
 
@@ -36,11 +40,11 @@ https://docs.google.com/spreadsheets/d/1_b4SCW6ZNiu6drtGvsKz-Ls4MAD2pYaoVzFS3kiK
 
 ## ER 図
 
-![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/er_diagram2.png)
+![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/er_diagram3.png)
 
 ## 画面遷移図
 
-![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/screen_transition_diagram.png)
+![image](https://github.com/fujisawagithub/nanbyo_connect/blob/main/docs/screen_transition_diagram3.png)
 
 ## ワイヤーフレーム
 
